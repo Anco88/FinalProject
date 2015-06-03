@@ -1,9 +1,15 @@
 
 public class Main {
-	static GameFrame maze;
+	static GameFrame frame;
+	static Maze maze;
 	public static void main(String[] args){
-		maze = new GameFrame();
+		
+		newModel();
+
 	}
 	
-
+	public static void newModel(){
+		maze = new Maze();
+		frame = new GameFrame(maze);
+	}
 }

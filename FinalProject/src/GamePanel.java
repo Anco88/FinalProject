@@ -21,12 +21,19 @@ public class GamePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//private GraphModel model;
+	private Maze maze;
 	
 	GamePanel(){
 
-		this.setPreferredSize(new Dimension(820,820));
+		this.setPreferredSize(new Dimension(400,400));
 		//this.model = model;
+
+		
+	}
+	
+	GamePanel(Maze maze){
+		super();
+		this.maze = maze;
 		repaint();
 		
 	}
@@ -36,12 +43,12 @@ public class GamePanel extends JPanel {
 	public void paintComponent(Graphics g){
 	super.paintComponent(g);
 		g.setColor(Color.BLACK);
-		for(int i = 0; i<100;i++){
-			for(int j = 0; j < 100; j++){
-				g.drawRect(j*10, i*10,10, 10);
-				
+		
+		for(int i = 0; i < maze.getHEIGHT();i++){
+			for(int j = 0; j < maze.getWIDTH(); j++){
+				g.drawRect(i*maze.getSIZE(), j*maze.getSIZE(), maze.getSIZE(), maze.getSIZE());
+				System.out.println(i*10 + " " + j*10);
 			}
-			
 		}
 	}
 }
