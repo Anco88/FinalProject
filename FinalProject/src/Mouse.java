@@ -17,30 +17,25 @@ public class Mouse extends MouseAdapter {
 		frame.gamePanel.addMouseMotionListener(this);
 	}
 	
-	
-	
-	@Override
-	public void mousePressed(MouseEvent e){
-		super.mousePressed(e);
-		location = e.getPoint();
+	private void action(MouseEvent e){
 		int y = e.getY()/ world.getMaze().getSIZE();
 		int x = e.getX()/ world.getMaze().getSIZE();
 		MazePoint point = world.getMaze().getMazeAt(x, y);
 		point.setType(frame.getMode());
 		System.out.println("Mousebutton pressed " + y + " "  + x );
-		//TODO: catch if out of range
+	}
+	
+	
+	@Override
+	public void mousePressed(MouseEvent e){
+		super.mousePressed(e);
+		action(e);
 		panel.repaint();
 	}
 	
 	@Override
 	public void mouseDragged(MouseEvent e){
-	System.out.println("dragged");
-	//TODO: catch if out of range, fix duplicate code.
-	int y = e.getY()/ world.getMaze().getSIZE();
-	int x = e.getX()/ world.getMaze().getSIZE();
-	MazePoint point = world.getMaze().getMazeAt(x, y);
-	point.setType(frame.getMode());
-	System.out.println("Mousebutton pressed " + y + " "  + x );
-	panel.repaint();
+		action(e);
+		panel.repaint();
 	}
 }
