@@ -14,8 +14,18 @@ public class GameFrame extends JFrame {
 	JPanel buttonPanel;
 	public GamePanel gamePanel;
 	Container content;
+	int mode = 0;
+
+	public int getMode() {
+		return mode;
+	}
+
+	public void setMode(int mode) {
+		this.mode = mode;
+	}
 
 	JButton makeWall = new JButton("Wall");
+	JButton makePath = new JButton("Path");
 	
 	GameFrame(){
 		
@@ -29,13 +39,14 @@ public class GameFrame extends JFrame {
 		
 	
 		buttonPanel.add(makeWall);
+		buttonPanel.add(makePath);
 		
 		content.add(gamePanel, BorderLayout.CENTER);
 		content.add(buttonPanel, BorderLayout.SOUTH);
 		
 
 		
-		this.setSize(1000,1000);
+		this.setSize(700,700);
 		this.setVisible(true);
 		this.init();
 
@@ -45,7 +56,16 @@ public class GameFrame extends JFrame {
 		makeWall.addActionListener(
 				new ActionListener(){
 					public void actionPerformed (ActionEvent e){
-						System.out.println("Remove vertex");
+						setMode(1);
+						System.out.println("Create wall mode");
+					}
+				}
+		);
+		makePath.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						setMode(0);
+						System.out.println("Create path mode");
 					}
 				}
 		);
