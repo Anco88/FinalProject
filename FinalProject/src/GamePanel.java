@@ -31,9 +31,9 @@ public class GamePanel extends JPanel {
 		
 	}
 	
-	GamePanel(Maze maze){
+	GamePanel(World world){
 		super();
-		this.maze = maze;
+		this.maze = world.getMaze();
 		repaint();
 		
 	}
@@ -47,7 +47,6 @@ public class GamePanel extends JPanel {
 		for(int i = 0; i < maze.getHEIGHT();i++){
 			for(int j = 0; j < maze.getWIDTH(); j++){
 				g.drawRect(i*maze.getSIZE(), j*maze.getSIZE(), maze.getSIZE(), maze.getSIZE());
-				System.out.println(i*10 + " " + j*10);
 			}
 		}
 	}

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class GameFrame extends JFrame {
 	Maze maze;
+	World world;
 	JPanel buttonPanel;
 	public GamePanel gamePanel;
 	Container content;
@@ -20,10 +21,10 @@ public class GameFrame extends JFrame {
 		
 	}
 	
-	GameFrame(Maze maze){
-		this.maze = maze;
+	GameFrame(World world){
+		this.world = world;
 		buttonPanel = new JPanel();
-		gamePanel = new GamePanel(maze);
+		gamePanel = new GamePanel(world);
 		content = getContentPane();
 		
 	
