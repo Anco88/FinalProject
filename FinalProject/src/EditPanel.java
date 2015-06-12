@@ -2,8 +2,10 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 
 public class EditPanel extends JPanel {
@@ -11,10 +13,12 @@ public class EditPanel extends JPanel {
 	MouseAction mouse;
 	GamePanel panel;
 	JPanel buttonPanel;
-	JButton makeWall = new JButton("Wall");
-	JButton makePath = new JButton("Path");
+	JToggleButton makeWall = new JToggleButton("Wall");
+	JToggleButton makePath = new JToggleButton("Path");
 	JButton save = new JButton("Save");
 	JButton load = new JButton("Load");
+	ButtonGroup btnGroup = new ButtonGroup();
+	
 	
 	private World world;
 
@@ -27,6 +31,9 @@ public class EditPanel extends JPanel {
 		buttonPanel.add(makePath);
 		buttonPanel.add(save);
 		buttonPanel.add(load);
+		btnGroup.add(makeWall);
+		btnGroup.add(makePath);
+		makePath.doClick();
 		this.add(buttonPanel);
 		
 		//this.setPreferredSize(new Dimension(400,400));

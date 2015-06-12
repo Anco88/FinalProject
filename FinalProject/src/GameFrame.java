@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+// MainFrame replaced this class, with editpanel
 
 public class GameFrame extends JFrame {
 	Maze maze;

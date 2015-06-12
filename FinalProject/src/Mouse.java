@@ -1,7 +1,7 @@
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+// MouseAction replaced this class
 
 public class Mouse extends MouseAdapter {
 	World world;
