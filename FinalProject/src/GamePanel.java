@@ -25,14 +25,14 @@ public class GamePanel extends JPanel {
 	
 	GamePanel(){
 
-		this.setPreferredSize(new Dimension(400,400));
+		this.setPreferredSize(new Dimension(602,602));
 		//this.model = model;
 
 		
 	}
 	
 	GamePanel(World world){
-		super();
+		this();
 		this.maze = world.getMaze();
 		repaint();
 		
@@ -47,7 +47,7 @@ public class GamePanel extends JPanel {
 		for(int i = 0; i < maze.getHEIGHT();i++){
 			for(int j = 0; j < maze.getWIDTH(); j++){
 				g.drawRect(i*maze.getSIZE(), j*maze.getSIZE(), maze.getSIZE(), maze.getSIZE());
-				
+				System.out.println("square");
 				if(maze.getMaze()[i][j].getType() == 1){
 					g.setColor(Color.GRAY);
 					g.fillRect(i*maze.getSIZE(), j*maze.getSIZE(),  maze.getSIZE(), maze.getSIZE());
