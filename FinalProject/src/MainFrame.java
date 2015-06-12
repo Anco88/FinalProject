@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 	private void init() {
 		contentPane = getContentPane();
 		//contentPane.setLayout(BorderLayout);
-		contentPane.add(new MainPanel(this, world));
+		setPanel(new MainPanel(this, world));
 		
 
 	}
@@ -38,7 +38,14 @@ public class MainFrame extends JFrame {
 	public void setPanel(EditPanel editPanel) {
 		System.out.println("test");
 		contentPane.removeAll();
-		contentPane.add(new EditPanel(world));
+		contentPane.add(new EditPanel(this, world));
+		this.setVisible(true);
+	}
+	
+	public void setPanel(MainPanel main) {
+		System.out.println("Going back to main panel");
+		contentPane.removeAll();
+		contentPane.add(main);
 		this.setVisible(true);
 	}
 

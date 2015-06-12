@@ -13,6 +13,8 @@ public class EditPanel extends JPanel {
 	MouseAction mouse;
 	GamePanel panel;
 	JPanel buttonPanel;
+	JPanel topButtons;
+	JButton backMainMenu = new JButton("Back to main menu");
 	JToggleButton makeWall = new JToggleButton("Wall");
 	JToggleButton makePath = new JToggleButton("Path");
 	JButton save = new JButton("Save");
@@ -21,12 +23,15 @@ public class EditPanel extends JPanel {
 	
 	
 	private World world;
+	private MainFrame frame;
 
 	public EditPanel(World world) {
 		this.world = world;
 		panel = new GamePanel(world);
-		this.add(panel);
+		
 		buttonPanel = new JPanel();
+		topButtons = new JPanel();
+		topButtons.add(backMainMenu);
 		buttonPanel.add(makeWall);
 		buttonPanel.add(makePath);
 		buttonPanel.add(save);
@@ -34,6 +39,9 @@ public class EditPanel extends JPanel {
 		btnGroup.add(makeWall);
 		btnGroup.add(makePath);
 		makePath.doClick();
+		
+		this.add(topButtons);
+		this.add(panel);
 		this.add(buttonPanel);
 		
 		//this.setPreferredSize(new Dimension(400,400));
@@ -42,6 +50,11 @@ public class EditPanel extends JPanel {
 		panel.addMouseMotionListener(mouse);
 		panel.addMouseListener(mouse);
 		init();
+	}
+
+	public EditPanel(MainFrame mainFrame, World world) {
+		this(world);
+		this.frame = mainFrame;
 	}
 
 	public int getMode() {
@@ -82,6 +95,13 @@ public class EditPanel extends JPanel {
 					public void actionPerformed (ActionEvent e){
 						world.getMaze().load("maze.txt");
 						System.out.println("load maze");
+					}
+				}
+		);
+		backMainMenu.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						frame.setPanel(new MainPanel(frame, world));
 					}
 				}
 		);
