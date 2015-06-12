@@ -47,7 +47,6 @@ public class GamePanel extends JPanel {
 		for(int i = 0; i < maze.getHEIGHT();i++){
 			for(int j = 0; j < maze.getWIDTH(); j++){
 				g.drawRect(i*maze.getSIZE(), j*maze.getSIZE(), maze.getSIZE(), maze.getSIZE());
-				System.out.println("square");
 				if(maze.getMaze()[i][j].getType() == 1){
 					g.setColor(Color.GRAY);
 					g.fillRect(i*maze.getSIZE(), j*maze.getSIZE(),  maze.getSIZE(), maze.getSIZE());
