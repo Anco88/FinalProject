@@ -26,6 +26,8 @@ public class GameFrame extends JFrame {
 
 	JButton makeWall = new JButton("Wall");
 	JButton makePath = new JButton("Path");
+	JButton save = new JButton("Save");
+	JButton load = new JButton("Load");
 	
 	GameFrame(){
 		
@@ -40,6 +42,9 @@ public class GameFrame extends JFrame {
 	
 		buttonPanel.add(makeWall);
 		buttonPanel.add(makePath);
+
+		buttonPanel.add(save);
+		buttonPanel.add(load);
 		
 		content.add(gamePanel, BorderLayout.CENTER);
 		content.add(buttonPanel, BorderLayout.SOUTH);
@@ -66,6 +71,22 @@ public class GameFrame extends JFrame {
 					public void actionPerformed (ActionEvent e){
 						setMode(0);
 						System.out.println("Create path mode");
+					}
+				}
+		);
+		save.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						world.getMaze().save("maze.txt");
+						System.out.println("save maze");
+					}
+				}
+		);
+		load.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						world.getMaze().load("maze.txt");
+						System.out.println("load maze");
 					}
 				}
 		);

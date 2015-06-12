@@ -28,7 +28,7 @@ public class Mouse extends MouseAdapter {
 	
 	@Override
 	public void mousePressed(MouseEvent e){
-		super.mousePressed(e);
+		//super.mousePressed(e);
 		action(e);
 		panel.repaint();
 	}
