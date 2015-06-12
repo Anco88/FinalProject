@@ -1,6 +1,8 @@
+import javax.swing.JFrame;
+
 
 public class Main {
-	static GameFrame frame;
+	static MainFrame frame;
 	static Maze maze;
 	static World world;
 	static Mouse mouse;
@@ -14,8 +16,9 @@ public class Main {
 		maze = new Maze();
 		world = new World();
 		world.setMaze(maze);
-		frame = new GameFrame(world);
-		mouse = new Mouse(world, frame);
-		
+		//frame = new GameFrame(world);
+		frame = new MainFrame(world);
+		//mouse = new Mouse(world, frame.getGameFrame());
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

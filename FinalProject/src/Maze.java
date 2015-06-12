@@ -37,7 +37,7 @@ public class Maze {
 	
 	Maze(){
 	
-		for(int i = 0; i<HEIGHT;i++){
+		for(int i = 0; i < HEIGHT;i++){
 			
 			for(int j = 0; j < WIDTH; j++){
 				maze[i][j] = new MazePoint(0 ,new Rectangle(j*SIZE, i*SIZE,SIZE, SIZE));
