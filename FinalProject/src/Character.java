@@ -1,25 +1,18 @@
+import java.awt.Point;
+import java.awt.geom.Point2D;
+
 
 public class Character {
 	int speed=0;
 	Object direction;
-	public class location{
-		int x, y;
-
-		public int getX() {
-			return x;
-		}
-
-		public void setX(int x) {
-			this.x = x;
-		}
-
-		public int getY() {
-			return y;
-		}
-
-		public void setY(int y) {
-			this.y = y;
-		}	
+	private Point2D.Double location;
+	
+	Character(){
+		 setLocation(new Point2D.Double());
+	}
+	
+	Character(int x, int y){
+		 setLocation(new Point2D.Double(x, y));
 	}
 	
 	public int getSpeed() {
@@ -33,6 +26,14 @@ public class Character {
 	}
 	public void setDirection(Object direction) {
 		this.direction = direction;
+	}
+
+	public Point2D.Double getLocation() {
+		return location;
+	}
+
+	public void setLocation(Point2D.Double location) {
+		this.location = location;
 	}
 	
 	

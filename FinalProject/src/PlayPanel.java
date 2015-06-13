@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -39,6 +40,8 @@ public class PlayPanel extends JPanel {
 	}
 
 	private void initWorld() {
+
+		Random rand = new Random();
 		Maze maze = world.getMaze();
 		ArrayList<Point> pathPoints = new ArrayList<Point>();
 		for(int i = 0; i < maze.getHEIGHT();i++){
@@ -49,9 +52,21 @@ public class PlayPanel extends JPanel {
 			}
 		}	
 		for(int i = 0; i < world.getSettings().getNumberOfPlayers(); i++){
-			world.getCharacters().add(new Character());
+			world.getCharacters().clear();
+			Character c;
+			int index = rand.nextInt(pathPoints.size());
+			System.out.println(index);
+			System.out.println();
+			Point p = pathPoints.get(index);
+			pathPoints.remove(index);
+			int x = (int) (p.getX() * maze.getSIZE() + 0.5 * maze.getSIZE());
+			int y = (int) (p.getY() * maze.getSIZE() + 0.5 * maze.getSIZE());
+			c = new Character(x, y);
+			world.getCharacters().add(c);
 		}
 		System.out.println(pathPoints);
+		System.out.println(world.getCharacters());
+		System.out.println(world.getCharacters().get(0).getLocation());
 	}
 
 	public PlayPanel(MainFrame mainFrame, World world) {
