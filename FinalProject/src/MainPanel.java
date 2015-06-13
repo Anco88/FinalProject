@@ -22,10 +22,13 @@ public class MainPanel extends JPanel {
 	MainFrame frame;
 	JButton editor;
 	private World world;
+	private JButton start;
 
 	public MainPanel() {
 		super();
+		start = new JButton("Start game");
 		editor = new JButton("Edit maze");
+		add(start);
 		add(editor);
 		this.setPreferredSize(new Dimension(400,400));
 		init();
@@ -43,10 +46,19 @@ public class MainPanel extends JPanel {
 	}
 	
 	private void init(){
+		start.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						frame.setPanel(new PlayPanel(frame, world));
+						System.out.println("Start game");
+					}
+				}
+		);
+
 		editor.addActionListener(
 				new ActionListener(){
 					public void actionPerformed (ActionEvent e){
-						frame.setPanel(new EditPanel(world));
+						frame.setPanel(new EditPanel(frame, world));
 						System.out.println("go to edit screen");
 					}
 				}

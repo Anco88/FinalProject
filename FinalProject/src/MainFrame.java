@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 	public void setPanel(EditPanel editPanel) {
 		System.out.println("test");
 		contentPane.removeAll();
-		contentPane.add(new EditPanel(this, world));
+		contentPane.add(editPanel);
 		this.setVisible(true);
 	}
 	
@@ -47,6 +47,14 @@ public class MainFrame extends JFrame {
 		contentPane.removeAll();
 		contentPane.add(main);
 		this.setVisible(true);
+	}
+
+	public void setPanel(PlayPanel playPanel) {
+		System.out.println("Going back to main panel");
+		contentPane.removeAll();
+		contentPane.add(playPanel);
+		this.setVisible(true);
+		
 	}
 
 }
