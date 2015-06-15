@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 
 public class MainFrame extends JFrame {
+	KeyAction key;
 
 	/**
 	 * 
@@ -19,6 +20,10 @@ public class MainFrame extends JFrame {
 		this.world = world;
 		this.setSize(700,700);
 		this.setVisible(true);
+		setFocusable(true);
+
+		key = new KeyAction();
+		addKeyListener(key);
 		this.init();
 	}
 
@@ -27,7 +32,6 @@ public class MainFrame extends JFrame {
 		//contentPane.setLayout(BorderLayout);
 		setPanel(new MainPanel(this, world));
 		
-
 	}
 
 	public GameFrame getGameFrame() {
@@ -50,7 +54,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public void setPanel(PlayPanel playPanel) {
-		System.out.println("Going back to main panel");
+		System.out.println("Going to playpanel");
 		contentPane.removeAll();
 		contentPane.add(playPanel);
 		this.setVisible(true);

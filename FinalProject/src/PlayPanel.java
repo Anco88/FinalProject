@@ -17,6 +17,7 @@ public class PlayPanel extends JPanel {
 	JPanel buttonPanel;
 	JPanel topButtons;
 	JButton backMainMenu = new JButton("Back to main menu");
+	KeyAction key;
 	
 	private World world;
 	private MainFrame frame;
@@ -32,11 +33,24 @@ public class PlayPanel extends JPanel {
 		this.add(topButtons);
 		this.add(panel);
 		this.add(buttonPanel);
-		
+		setFocusable(true);
+		grabFocus();
+		requestFocusInWindow();
 		//this.setPreferredSize(new Dimension(400,400));
 		this.setVisible(true);
+		
+		key = new KeyAction();
+		this.addKeyListener(key);
 		init();
 		initWorld();
+	}
+	
+	public PlayPanel(World world, MainFrame frame) {
+		this(world);
+		//this.frame = frame;
+		//key = new KeyAction();
+		//frame.addKeyListener(key);
+		
 	}
 
 	private void initWorld() {
