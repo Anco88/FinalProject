@@ -6,35 +6,52 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+// MainFrame replaced this class, with editpanel
 
 public class GameFrame extends JFrame {
 	Maze maze;
+	World world;
 	JPanel buttonPanel;
 	public GamePanel gamePanel;
 	Container content;
+	int mode = 0;
+
+	public int getMode() {
+		return mode;
+	}
+
+	public void setMode(int mode) {
+		this.mode = mode;
+	}
 
 	JButton makeWall = new JButton("Wall");
+	JButton makePath = new JButton("Path");
+	JButton save = new JButton("Save");
+	JButton load = new JButton("Load");
 	
 	GameFrame(){
 		
 	}
 	
-	GameFrame(Maze maze){
-		this.maze = maze;
+	GameFrame(World world){
+		this.world = world;
 		buttonPanel = new JPanel();
-		gamePanel = new GamePanel(maze);
+		gamePanel = new GamePanel(world);
 		content = getContentPane();
 		
 	
 		buttonPanel.add(makeWall);
+		buttonPanel.add(makePath);
+
+		buttonPanel.add(save);
+		buttonPanel.add(load);
 		
 		content.add(gamePanel, BorderLayout.CENTER);
 		content.add(buttonPanel, BorderLayout.SOUTH);
 		
 
 		
-		this.setSize(1000,1000);
+		this.setSize(700,700);
 		this.setVisible(true);
 		this.init();
 
@@ -44,7 +61,32 @@ public class GameFrame extends JFrame {
 		makeWall.addActionListener(
 				new ActionListener(){
 					public void actionPerformed (ActionEvent e){
-						System.out.println("Remove vertex");
+						setMode(1);
+						System.out.println("Create wall mode");
+					}
+				}
+		);
+		makePath.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						setMode(0);
+						System.out.println("Create path mode");
+					}
+				}
+		);
+		save.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						world.getMaze().save("maze.txt");
+						System.out.println("save maze");
+					}
+				}
+		);
+		load.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						world.getMaze().load("maze.txt");
+						System.out.println("load maze");
 					}
 				}
 		);

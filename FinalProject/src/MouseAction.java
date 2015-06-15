@@ -1,27 +1,25 @@
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-// MouseAction replaced this class
 
-public class Mouse extends MouseAdapter {
+
+public class MouseAction extends MouseAdapter {
 	World world;
 	Point location;
-	GamePanel panel;
-	GameFrame frame;
+	EditPanel panel;
 	
-	Mouse(World world, GameFrame frame){
+	MouseAction(World world, EditPanel panel){
 		this.world = world;
-		this.frame = frame;
-		panel = frame.gamePanel;
-		frame.gamePanel.addMouseListener(this);
-		frame.gamePanel.addMouseMotionListener(this);
+		this.panel = panel;
+		//frame.gamePanel.addMouseListener(this);
+		//frame.gamePanel.addMouseMotionListener(this);
 	}
 	
 	private void action(MouseEvent e){
 		int y = e.getY()/ world.getMaze().getSIZE();
 		int x = e.getX()/ world.getMaze().getSIZE();
 		MazePoint point = world.getMaze().getMazeAt(x, y);
-		point.setType(frame.getMode());
+		point.setType(panel.getMode());
 		System.out.println("Mousebutton pressed " + y + " "  + x );
 	}
 	
