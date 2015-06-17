@@ -69,4 +69,8 @@ public class GamePanel extends JPanel {
 		}
 		
 	}
+
+	public World getWorld() {
+		return world;
+	}
 }

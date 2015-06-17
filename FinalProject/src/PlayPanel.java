@@ -26,6 +26,7 @@ public class PlayPanel extends JPanel {
 	
 	private World world;
 	private MainFrame frame;
+	private Timer timer;
 
 	public PlayPanel(MainFrame frame, World world) {
 		this.world = world;
@@ -36,7 +37,8 @@ public class PlayPanel extends JPanel {
 		topButtons = new JPanel();
 		topButtons.add(backMainMenu);
 		
-		u = new Update(panel);
+		u = new Update(panel, this);
+		
 		this.add(topButtons);
 		this.add(panel);
 		this.add(buttonPanel);
@@ -126,20 +128,31 @@ public class PlayPanel extends JPanel {
 		u.getControllers().add(p1);
 		u.getControllers().add(p2);
 		panel.repaint();
-		Timer timer = new Timer(true);
+		timer = new Timer(true);
 		timer.schedule(u, 0, 10);
 		
+	}
+	
+	public Timer getTimer(){
+		return timer;
+	}
+	
+	public void stopTimer(){
+		timer.cancel();
+		u.cancel();
 	}
 
 	public void init(){
 		backMainMenu.addActionListener(
 				new ActionListener(){
 					public void actionPerformed (ActionEvent e){
+						stopTimer();
 						frame.setPanel(new MainPanel(frame, world));
 					}
 				}
 		);
 		
 	}
+	
 
 }

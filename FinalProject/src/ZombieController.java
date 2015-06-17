@@ -38,13 +38,13 @@ public class ZombieController implements Controller {
 		}
 		
 		if(random.nextBoolean()){
-			if(zombie.getLocation().getY() - closest.getLocation().getY() < 0 ){
+			if(closest != null && zombie.getLocation().getY() - closest.getLocation().getY() < 0 ){
 				zombie.moveDown();
 			}
 			else{ zombie.moveUp();}
 		}
 		else{
-			if(zombie.getLocation().getX() - closest.getLocation().getX() > 0 ){
+			if(closest != null && zombie.getLocation().getX() - closest.getLocation().getX() > 0 ){
 				zombie.moveLeft();
 			}
 			else{ zombie.moveRight();}

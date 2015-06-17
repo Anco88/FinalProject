@@ -1,3 +1,4 @@
+import java.awt.Frame;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,7 @@ public class World {
 	private Maze maze;
 	private Settings settings;
 	private ArrayList<Character> characters  = new ArrayList<Character>();
+	private MainFrame frame;
 	
 	World(){
 		settings = new Settings();
@@ -44,6 +46,15 @@ public class World {
 	public Character getCharacter(int i) {
 		return characters.get(i);
 	}
-	
+
+	public void setFrame(MainFrame frame) {
+		this.frame = frame;
+		
+	}
+	public MainFrame getFrame() {
+		return frame;
+		
+	}
+
 
 }

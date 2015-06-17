@@ -35,7 +35,7 @@ public class PlayerController implements Controller{
 
 
 	public void update() {
-		System.out.println(System.nanoTime());
+		//System.out.println(System.nanoTime());
 		int lastUsefullIndex=-1;
 		if(pressed.lastIndexOf(up) > lastUsefullIndex){
 			lastUsefullIndex = pressed.lastIndexOf(up);
