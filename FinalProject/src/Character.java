@@ -90,6 +90,11 @@ public class Character {
 				return false;
 			}
 		}
+		
+		if(p.getY() - 5 < 0 || p.getY() + 5 > world.getMaze().getHEIGHT() * world.getMaze().getSIZE() ||
+				p.getX() - 5 < 0 || p.getX() + 5 > world.getMaze().getHEIGHT() * world.getMaze().getSIZE()){
+			return false;
+		}
 			
 		return true;
 	}

@@ -1,0 +1,1 @@
+Gives errors when clicking outside maze in edit maze mode.
