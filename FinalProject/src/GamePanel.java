@@ -47,8 +47,9 @@ public class GamePanel extends JPanel {
 	public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D)g;
-	   // Assume x, y, and diameter are instance variables
-	   		g.setColor(Color.BLACK);
+
+	   // Assume x, y, and diameter are instance variables.
+   		g.setColor(Color.BLACK);
 		
 		for(int i = 0; i < maze.getHEIGHT();i++){
 			for(int j = 0; j < maze.getWIDTH(); j++){

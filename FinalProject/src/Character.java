@@ -6,6 +6,7 @@ import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 
 
+
 public class Character {
 	int speed=0;
 	private String type = "";
@@ -21,6 +22,7 @@ public class Character {
 	Character(int x, int y, World world){
 		 setLocation(new Point2D.Double(x, y));
 		 this.world = world;
+
 	}
 	
 	public int getSpeed() {

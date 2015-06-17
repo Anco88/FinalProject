@@ -28,6 +28,7 @@ public class KeyAction extends KeyAdapter {
 	
 	public ArrayList<Integer> getPressedKeys(){
 		return pressedKeys;
+
 	}
 	
 }

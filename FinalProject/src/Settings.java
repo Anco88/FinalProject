@@ -40,7 +40,6 @@ public class Settings {
 
 	public int getNumberOfZombies() {
 		return numberOfZombies;
-
 	}
 	
 }

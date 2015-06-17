@@ -18,6 +18,7 @@ public class Main {
 		world.setMaze(maze);
 		//frame = new GameFrame(world);
 		frame = new MainFrame(world);
+		world.setFrame(frame);
 		//mouse = new Mouse(world, frame.getGameFrame());
 		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
