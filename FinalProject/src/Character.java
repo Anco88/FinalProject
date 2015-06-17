@@ -97,7 +97,6 @@ public class Character {
 				p.getX() - 5 < 0 || p.getX() + 5 > world.getMaze().getHEIGHT() * world.getMaze().getSIZE()){
 			return false;
 		}
-			
 		return true;
 	}
 
