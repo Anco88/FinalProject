@@ -10,11 +10,13 @@ public class Settings {
 	int numberOfPlayers;
 	int numberOfAI;
 	int numberOfItems;
+	int numberOfZombies;
 	
 	Settings(){
 		numberOfPlayers = 2;
 		numberOfAI = 0;
 		numberOfItems = 0;
+		numberOfZombies = 2;
 	}
 	
 	public int getNumberOfPlayers() {
@@ -34,6 +36,11 @@ public class Settings {
 	}
 	public void setNumberOfItems(int numberOfItems) {
 		this.numberOfItems = numberOfItems;
+	}
+
+	public int getNumberOfZombies() {
+		return numberOfZombies;
+
 	}
 	
 }

@@ -30,7 +30,7 @@ public class PlayerController implements Controller{
 	
 	public void setLastCheck(Long time){
 		lastCheck = time;
-		System.out.println(time);
+		//System.out.println(time);
 	}
 
 

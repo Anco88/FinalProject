@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Character {
 	int speed=0;
+	private String type = "";
 	World world = null;
 	private Color color = Color.RED;
 	Object direction;
@@ -107,6 +108,14 @@ public class Character {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 

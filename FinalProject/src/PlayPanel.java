@@ -22,6 +22,7 @@ public class PlayPanel extends JPanel {
 	PlayerController p1, p2;
 	JButton backMainMenu = new JButton("Back to main menu");
 	KeyAction key;
+	Update u = null;
 	
 	private World world;
 	private MainFrame frame;
@@ -35,6 +36,7 @@ public class PlayPanel extends JPanel {
 		topButtons = new JPanel();
 		topButtons.add(backMainMenu);
 		
+		u = new Update(panel);
 		this.add(topButtons);
 		this.add(panel);
 		this.add(buttonPanel);
@@ -59,6 +61,7 @@ public class PlayPanel extends JPanel {
 
 	private void initWorld() {
 		Player c = new Player(0, 0, world);
+		Zombie z = new Zombie(0, 0, world);
 		Random rand = new Random();
 		Maze maze = world.getMaze();
 		ArrayList<Point> pathPoints = new ArrayList<Point>();
@@ -90,9 +93,26 @@ public class PlayPanel extends JPanel {
 		System.out.println("Keys " + frame);
 		System.out.println(c);
 		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(0));
-		world.getCharacter(0).setColor(Color.RED);
+		world.getCharacter(0).setColor(Color.GREEN);
 		p2 = new PlayerController(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(1));
 		world.getCharacter(1).setColor(Color.BLUE);
+		
+		
+		for(int i = 0; i < world.getSettings().getNumberOfZombies(); i++){
+			int index = rand.nextInt(pathPoints.size());
+			System.out.println(index);
+			System.out.println();
+			Point p = pathPoints.get(index);
+			pathPoints.remove(index);
+			int x = (int) (p.getX() * maze.getSIZE() + 0.5 * maze.getSIZE());
+			int y = (int) (p.getY() * maze.getSIZE() + 0.5 * maze.getSIZE());
+			z = new Zombie(x, y, world);
+			world.getCharacters().add(z);
+			z.setColor(Color.RED);
+			u.getControllers().add(new ZombieController(z, world));
+			
+		}
+		
 		panel.repaint();
 		playLoop();
 		
@@ -101,7 +121,7 @@ public class PlayPanel extends JPanel {
 
 
 	private void playLoop() {
-		Update u = new Update(panel);
+		
 		p1.setLastCheck(System.nanoTime());
 		u.getControllers().add(p1);
 		u.getControllers().add(p2);
