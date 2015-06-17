@@ -58,7 +58,7 @@ public class PlayPanel extends JPanel {
 	}
 
 	private void initWorld() {
-		Player c = new Player(0, 0);
+		Player c = new Player(0, 0, world);
 		Random rand = new Random();
 		Maze maze = world.getMaze();
 		ArrayList<Point> pathPoints = new ArrayList<Point>();
@@ -69,8 +69,9 @@ public class PlayPanel extends JPanel {
 				}
 			}
 		}	
+		world.getCharacters().clear();
 		for(int i = 0; i < world.getSettings().getNumberOfPlayers(); i++){
-			world.getCharacters().clear();
+			
 		
 			int index = rand.nextInt(pathPoints.size());
 			System.out.println(index);
@@ -79,7 +80,7 @@ public class PlayPanel extends JPanel {
 			pathPoints.remove(index);
 			int x = (int) (p.getX() * maze.getSIZE() + 0.5 * maze.getSIZE());
 			int y = (int) (p.getY() * maze.getSIZE() + 0.5 * maze.getSIZE());
-			c = new Player(x, y);
+			c = new Player(x, y, world);
 			world.getCharacters().add(c);
 			
 		}
@@ -88,7 +89,10 @@ public class PlayPanel extends JPanel {
 		System.out.println(world.getCharacters().get(0).getLocation());
 		System.out.println("Keys " + frame);
 		System.out.println(c);
-		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, frame.getKeyAction().getPressedKeys(), c);
+		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(0));
+		world.getCharacter(0).setColor(Color.RED);
+		p2 = new PlayerController(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(1));
+		world.getCharacter(1).setColor(Color.BLUE);
 		panel.repaint();
 		playLoop();
 		
@@ -100,9 +104,10 @@ public class PlayPanel extends JPanel {
 		Update u = new Update(panel);
 		p1.setLastCheck(System.nanoTime());
 		u.getControllers().add(p1);
+		u.getControllers().add(p2);
 		panel.repaint();
 		Timer timer = new Timer(true);
-		timer.schedule(u, 0, 100);
+		timer.schedule(u, 0, 10);
 		
 	}
 

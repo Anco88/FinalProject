@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
@@ -14,6 +15,7 @@ public class PlayerController implements Controller{
 	int up, down, left, right;
 	ArrayList<Integer> pressed;
 	private Player player;
+
 	
 	
 	PlayerController(int up, int down, int left, int right, ArrayList<Integer> pressed, Player p){
@@ -69,6 +71,8 @@ public class PlayerController implements Controller{
 		}
 		
 	}
+
+
 
 
 }

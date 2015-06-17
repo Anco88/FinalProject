@@ -13,14 +13,17 @@ public class KeyAction extends KeyAdapter {
 	
 	@Override
  	public void keyPressed(KeyEvent e){
+		if(pressedKeys.contains(e.getKeyCode())){
+			pressedKeys.remove((Integer) e.getKeyCode());
+		}
 		pressedKeys.add(e.getKeyCode());
 		System.out.println(pressedKeys);
 	}
 	
 	@Override
  	public void keyReleased(KeyEvent e){
-		//pressedKeys.remove((Integer) e.getKeyCode());
-		//System.out.println(pressedKeys);
+		pressedKeys.remove((Integer) e.getKeyCode());
+		System.out.println(pressedKeys);
 	}
 	
 	public ArrayList<Integer> getPressedKeys(){

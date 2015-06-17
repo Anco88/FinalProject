@@ -64,7 +64,7 @@ public class GamePanel extends JPanel {
 		
 		for(Character c : world.getCharacters()){
 			Ellipse2D.Double circle = new Ellipse2D.Double(c.getLocation().getX()-5, c.getLocation().getY()-5, 10, 10);
-			g.setColor(Color.RED);
+			g.setColor(c.getColor());
 			g2d.fill(circle);
 		}
 		

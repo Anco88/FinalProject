@@ -12,7 +12,7 @@ public class Settings {
 	int numberOfItems;
 	
 	Settings(){
-		numberOfPlayers = 1;
+		numberOfPlayers = 2;
 		numberOfAI = 0;
 		numberOfItems = 0;
 	}

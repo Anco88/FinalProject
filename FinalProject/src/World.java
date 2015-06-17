@@ -41,5 +41,9 @@ public class World {
 		this.characters = characters;
 	}
 	
+	public Character getCharacter(int i) {
+		return characters.get(i);
+	}
+	
 
 }

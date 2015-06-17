@@ -1,8 +1,10 @@
 
 public class Player extends Character {
 	
-	Player(int x, int y) {
-		super(x, y);
+	
+
+	public Player(int x, int y, World world) {
+		super(x,y,world);
 	}
 
 	Object inventory[];
