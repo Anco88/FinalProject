@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,12 +40,12 @@ public class EditPanel extends JPanel {
 		btnGroup.add(makeWall);
 		btnGroup.add(makePath);
 		makePath.doClick();
+		this.setLayout(new BorderLayout());
+		this.add(topButtons, BorderLayout.NORTH);
+		this.add(panel, BorderLayout.CENTER);
+		this.add(buttonPanel, BorderLayout.SOUTH);
 		
-		this.add(topButtons);
-		this.add(panel);
-		this.add(buttonPanel);
-		
-		//this.setPreferredSize(new Dimension(400,400));
+		panel.setPreferredSize(new Dimension(602,602));
 		this.setVisible(true);
 		mouse = new MouseAction(world, this);
 		panel.addMouseMotionListener(mouse);

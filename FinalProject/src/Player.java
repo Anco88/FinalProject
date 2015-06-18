@@ -14,7 +14,7 @@ public class Player extends Character  {
 		this.setType("human");
 		this.setName(name);
 		currentItem.add("pickaxe");
-		//currentItem.add("wall");
+		currentItem.add("wall");
 		pickWall();
 	}
 
@@ -131,6 +131,11 @@ public class Player extends Character  {
 
 	public String getCurrentItem() {
 		return currentItem.getCurrent();
+	}
+	
+	public void nextItem() {
+		currentItem.next();
+		change();
 	}
 
 	public Boolean getHasWon() {

@@ -64,8 +64,6 @@ public class PlayPanel extends JPanel {
 	}
 	
 	
-
-
 	public KeyAction getKeyAction(){
 		return key;
 	}
@@ -103,9 +101,9 @@ public class PlayPanel extends JPanel {
 		System.out.println(world.getCharacters().get(0).getLocation());
 		System.out.println("Keys " + frame);
 		System.out.println(c);
-		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_P, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(0));
+		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_P, KeyEvent.VK_O, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(0), this);
 		world.getCharacter(0).setColor(Color.GREEN);
-		p2 = new PlayerController(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D,KeyEvent.VK_T, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(1));
+		p2 = new PlayerController(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D,KeyEvent.VK_T, KeyEvent.VK_R, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(1), this);
 		world.getCharacter(1).setColor(Color.BLUE);
 		
 		

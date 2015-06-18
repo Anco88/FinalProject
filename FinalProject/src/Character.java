@@ -8,12 +8,16 @@ import java.util.Observable;
 
 
 
-public class Character extends Observable{
-	int speed=0;
+/**
+ * @author anco
+ *
+ */
+public abstract class Character extends Observable{
+	protected int speed=0; // not used yet
 	private String type = "";
-	World world = null;
+	protected World world = null;
 	private Color color = Color.RED;
-	char direction = 'n';
+	protected char direction = 'n';
 	protected Point2D.Double location;
 	
 	Character(){
@@ -90,6 +94,8 @@ public class Character extends Observable{
 		ArrayList<MazePoint> rect = new ArrayList<MazePoint>();
 		int a = (int) (p.getX() / world.getMaze().getSIZE());
 		int b = (int) (p.getY() / world.getMaze().getSIZE());
+		
+		// add the 9 surrounding mazepoints to array to check overlap
 		for(int x = a-1; x <= a + 1; x++){
 			for(int y = b - 1; y <= b + 1; y++){
 				if(x >= 0 && x < world.getMaze().getWIDTH() && y >= 0 && y < world.getMaze().getHEIGHT()){
@@ -99,12 +105,13 @@ public class Character extends Observable{
 				}
 			}
 		}
+		// check if there is a overlap with surrounding mazepoints
 		for(MazePoint m : rect){
 			if( c.intersects(m.getRectangle()) ){
 				return false;
 			}
 		}
-		
+		// check if the char want to go out of the maze
 		if(p.getY() - 5 < 0 || p.getY() + 5 > world.getMaze().getHEIGHT() * world.getMaze().getSIZE() ||
 				p.getX() - 5 < 0 || p.getX() + 5 > world.getMaze().getHEIGHT() * world.getMaze().getSIZE()){
 			return false;
@@ -128,7 +135,5 @@ public class Character extends Observable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-
 	
 }

@@ -49,6 +49,5 @@ public class PlayerInfo extends JPanel implements Observer {
 			winner.setVisible(true);
 		}
 	}
-	
 
 }
