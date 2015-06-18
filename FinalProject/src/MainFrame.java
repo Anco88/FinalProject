@@ -33,13 +33,7 @@ public class MainFrame extends JFrame {
 		setPanel(new MainPanel(this, world));
 		
 	}
-	
-	
 
-	public GameFrame getGameFrame() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void setPanel(EditPanel editPanel) {
 		System.out.println("test");

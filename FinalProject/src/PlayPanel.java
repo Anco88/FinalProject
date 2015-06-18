@@ -22,6 +22,7 @@ public class PlayPanel extends JPanel {
 	JPanel topButtons;
 	PlayerController p1, p2;
 	JButton backMainMenu = new JButton("Back to main menu");
+	JButton restart = new JButton("Restart");
 	KeyAction key;
 	Update u = null;
 	
@@ -38,7 +39,7 @@ public class PlayPanel extends JPanel {
 		buttonPanel = new JPanel();
 		topButtons = new JPanel();
 		topButtons.add(backMainMenu);
-		
+		topButtons.add(restart);
 		u = new Update(panel, this);
 		
 		this.add(topButtons, BorderLayout.PAGE_START);
@@ -156,6 +157,14 @@ public class PlayPanel extends JPanel {
 					public void actionPerformed (ActionEvent e){
 						stopTimer();
 						frame.setPanel(new MainPanel(frame, world));
+					}
+				}
+		);
+		restart.addActionListener(
+				new ActionListener(){
+					public void actionPerformed (ActionEvent e){
+						stopTimer();
+						frame.setPanel(new PlayPanel(frame, world));
 					}
 				}
 		);
