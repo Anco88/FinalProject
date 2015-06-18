@@ -1,1 +1,5 @@
 Gives errors when clicking outside maze in edit maze mode.
+Borders visible when playing game
+Settings can't be changed
+Maze isn't updated after loading maze
+When there is no maze.txt in the folder it throws java.io.FileNotFoundException exception
