@@ -11,12 +11,12 @@ import java.util.ArrayList;
  */
 public class World {
 	private Maze maze;
-	private Settings settings;
+	private Settings settings =  new Settings();
 	private ArrayList<Character> characters  = new ArrayList<Character>();
 	private MainFrame frame;
 	
 	World(){
-		settings = new Settings();
+		
 	}
 
 	public Maze getMaze() {

@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +20,10 @@ public class MainPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	MainFrame frame;
-	JButton editor;
+	private MainFrame frame;
+	private JPanel topPanel;
+	private SettingsPanel settingsPanel;
+	private JButton editor;
 	private World world;
 	private JButton start;
 
@@ -28,10 +31,8 @@ public class MainPanel extends JPanel {
 		super();
 		start = new JButton("Start game");
 		editor = new JButton("Edit maze");
-		add(start);
-		add(editor);
-		this.setPreferredSize(new Dimension(400,400));
 		init();
+	
 	}
 	
 	public MainPanel(MainFrame frame){
@@ -43,6 +44,14 @@ public class MainPanel extends JPanel {
 		this();
 		this.frame = frame;
 		this.world = world;
+		this.setLayout(new BorderLayout());
+		settingsPanel = new SettingsPanel(world);
+		topPanel = new JPanel();
+		topPanel.add(start);
+		topPanel.add(editor);
+		add(topPanel, BorderLayout.NORTH);
+		add(settingsPanel, BorderLayout.CENTER);
+				
 	}
 	
 	private void init(){

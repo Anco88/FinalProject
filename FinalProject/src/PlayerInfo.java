@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 
 
 public class PlayerInfo extends JPanel implements Observer {
-	Player p;
-	JLabel label, item, numPick, numWall;
+	private Player p;
+	private JLabel label, item, numPick, numWall;
 	
 	public PlayerInfo(Player p){
 		this.p = p;

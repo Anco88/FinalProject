@@ -7,15 +7,13 @@
  *
  */
 public class Settings {
-	int numberOfPlayers;
-	int numberOfAI;
-	int numberOfItems;
-	int numberOfZombies;
+	private int numberOfPlayers;
+	//private int numberOfAI;		not used yet
+	//private int numberOfItems; 	not used yet
+	private int numberOfZombies =2;
 	
 	Settings(){
 		numberOfPlayers = 2;
-		numberOfAI = 0;
-		numberOfItems = 0;
 		numberOfZombies = 2;
 	}
 	
@@ -25,21 +23,22 @@ public class Settings {
 	public void setNumberOfPlayers(int numberOfPlayers) {
 		this.numberOfPlayers = numberOfPlayers;
 	}
-	public int getNumberOfAI() {
-		return numberOfAI;
-	}
-	public void setNumberOfAI(int numberOfAI) {
-		this.numberOfAI = numberOfAI;
-	}
-	public int getNumberOfItems() {
-		return numberOfItems;
-	}
-	public void setNumberOfItems(int numberOfItems) {
-		this.numberOfItems = numberOfItems;
-	}
 
 	public int getNumberOfZombies() {
 		return numberOfZombies;
 	}
+
+	public void setNumberOfZombies(String text) {
+		try {
+			int n = Integer.parseInt(text);
+			if(n > 0 && n < 50){
+				numberOfZombies = n;
+			}
+		} catch (NumberFormatException e) {
+			System.err.println("Input isn't good number");
+			e.printStackTrace();
+		}		
+	}
+
 	
 }
