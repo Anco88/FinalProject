@@ -48,7 +48,7 @@ public class Maze {
 	
 	public MazePoint getMazeAt(int a, int b){
 		if (exist(a, b)){
-		return maze[a][b];
+			return maze[a][b];
 		}
 		return null;
 	}

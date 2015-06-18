@@ -4,10 +4,11 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
+import java.util.Observable;
 
 
 
-public class Character {
+public class Character extends Observable{
 	int speed=0;
 	private String type = "";
 	World world = null;

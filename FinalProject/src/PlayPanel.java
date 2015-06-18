@@ -49,14 +49,14 @@ public class PlayPanel extends JPanel {
 		grabFocus();
 		requestFocusInWindow();
 		//this.setPreferredSize(new Dimension(400,400));
-
-		
+				
 		key = new KeyAction();
 		this.addKeyListener(key);
 		init();
 		initWorld();
-		panelP1 = new Playerinfo((Player) world.getCharacter(0));
-		panelP2 = new Playerinfo((Player) world.getCharacter(1));
+		panelP1 = new PlayerInfo((Player) world.getCharacter(0));
+		panelP2 = new PlayerInfo((Player) world.getCharacter(1));
+
 		this.add(panelP1, BorderLayout.LINE_START);
 		this.add(panelP2, BorderLayout.LINE_END);
 		this.setVisible(true);

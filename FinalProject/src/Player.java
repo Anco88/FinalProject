@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class Player extends Character {
+public class Player extends Character  {
 	private ArrayList <Items> inventory = new ArrayList<Items>();
 	private long startTimer = -1;
 	private int pickaxe = 1;
@@ -13,10 +13,14 @@ public class Player extends Character {
 		this.setType("human");
 		this.setName(name);
 		currentItem.add("pickaxe");
-		currentItem.add("wall");
+		//currentItem.add("wall");
 		pickWall();
 	}
 
+	private void change(){
+		setChanged();
+		notifyObservers();
+	}
 	
 	public ArrayList <Items> getInventory() {
 		return inventory;
@@ -28,16 +32,20 @@ public class Player extends Character {
 	}
 
 	public void pickWall(){
+		//System.out.println("pickwall");
 		if(pickaxe > 0){
 			if(getWallCloseBy() != null && getWallCloseBy().getType() == 1){
+				//System.out.println("test");
 				if(startTimer == -1){
 					startTimer = System.currentTimeMillis();
 					System.out.println("time start: " + startTimer);
 				}
 				else{
-					if(System.currentTimeMillis() - startTimer > 2000){
+					//System.out.println(System.currentTimeMillis());
+					if(System.currentTimeMillis() - startTimer > 20){
 						getWallCloseBy().setType(0);
 						wall++;
+						change();
 						startTimer = -1;
 						System.out.println("break down the wall");
 					}
@@ -68,8 +76,9 @@ public class Player extends Character {
 				x -= 7;
 				break;
 		}
-		
-		return world.getMaze().getMazeAt((int) x / world.getMaze().getSIZE(), (int) y / world.getMaze().getSIZE());
+		MazePoint p = world.getMaze().getMazeAt((int) x / world.getMaze().getSIZE(), (int) y / world.getMaze().getSIZE()); 
+		System.out.println(p + " : " + p.getType());
+		return p;
 		
 	}
 
