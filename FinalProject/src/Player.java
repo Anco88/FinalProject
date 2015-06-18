@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Player extends Character  {
 	private ArrayList <Items> inventory = new ArrayList<Items>();
 	private long startTimer = -1;
-	private int pickaxe = 1;
+	private int pickaxe = 5;
 	private int wall = 0;
 	private CurrentItem currentItem = new CurrentItem();
 	private String name = "player";
@@ -45,6 +45,7 @@ public class Player extends Character  {
 					if(System.currentTimeMillis() - startTimer > 20){
 						getWallCloseBy().setType(0);
 						wall++;
+						pickaxe--;
 						change();
 						startTimer = -1;
 						System.out.println("break down the wall");

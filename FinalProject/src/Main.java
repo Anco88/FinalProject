@@ -5,7 +5,6 @@ public class Main {
 	static MainFrame frame;
 	static Maze maze;
 	static World world;
-	static Mouse mouse;
 	public static void main(String[] args){
 		
 		newModel();
@@ -19,7 +18,6 @@ public class Main {
 		//frame = new GameFrame(world);
 		frame = new MainFrame(world);
 		world.setFrame(frame);
-		//mouse = new Mouse(world, frame.getGameFrame());
 		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
