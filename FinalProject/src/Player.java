@@ -1,3 +1,4 @@
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
 
@@ -96,12 +97,109 @@ public class Player extends Character  {
 
 
 	public void useItem() {
-		if(currentItem.getCurrent()=="pickaxe"){
-			pickWall();
+		
+		switch(currentItem.getCurrent()){
+		case "pickaxe":	pickWall();
+		//				System.out.println("pcik wall");
+						break;
+		case "wall": 	buildWall();
+		//System.out.println("Buildwall");
+						break;
 		}
 		
 	}
 
+
+	private void buildWall() {
+		MazePoint m = canBuildWall();
+		System.out.println("MP: " + m);
+		if(wall > 0){
+			if(m != null){
+				//System.out.println("test");
+				if(startTimer == -1){
+					startTimer = System.currentTimeMillis();
+					System.out.println("time start: " + startTimer);
+				}
+				else{
+					//System.out.println(System.currentTimeMillis());
+					if(System.currentTimeMillis() - startTimer > 20){
+						checkLocationAfterBuildWall(m);
+						m.setType(1);
+						wall--;
+						change();
+						
+						startTimer = -1;
+						System.out.println("break down the wall");
+					}
+				}
+			}
+		}
+		else{
+			System.out.println("no Pickaxe");
+		}
+	}
+
+	private void checkLocationAfterBuildWall(MazePoint p) {
+		System.out.println("chekc stuk: " + p);
+		Ellipse2D.Double c = new Ellipse2D.Double(location.getX()-5, location.getY()-5, 10, 10);
+		while(c.intersects(p.getRectangle())){
+			System.out.println("stuk");
+			switch(direction){
+			case 'n': 	location.setLocation(location.getX(), location.getY() + 1);
+			break;
+			case 's': 	location.setLocation(location.getX(), location.getY() - 1);
+			break;	
+			case 'e': 	location.setLocation(location.getX() - 1, location.getY());
+			break;
+			case 'w': 	location.setLocation(location.getX() + 1, location.getY());
+			break;
+			}
+			c = new Ellipse2D.Double(location.getX()-5, location.getY()-5, 10, 10);
+		}
+		
+	}
+
+	private MazePoint canBuildWall() {
+		int n = 0;
+		int x = (int) location.getX();
+		int y = (int) location.getY();
+		if(direction == 'n' || direction == 's'){
+			n = y;
+		}
+		else{
+			n = x;
+		}
+		
+		// check if player is in good half of square
+		n = n % world.getMaze().getSIZE();
+		if( (direction == 'n' || direction == 'w') && n >= world.getMaze().getSIZE()/2){
+			return null;
+		}
+		if( (direction == 's' || direction == 'e') && n <= world.getMaze().getSIZE()/2){
+			return null;
+		}
+		// check if there is no wall in square next to it
+		x = x / world.getMaze().getSIZE();
+		y = y / world.getMaze().getSIZE();
+		
+		switch(direction){
+			case 'n': 	y -= 1;
+			break;
+			case 's': 	y += 1;
+			break;
+			case 'e': 	x += 1;
+			break;
+			case 'w': 	x -= 1;
+			break;
+		}
+		MazePoint m = world.getMaze().getMazeAt(x, y);
+		if(m != null && m.getType() == 0){
+			System.out.println("can build wall");
+			return m;
+		}
+		
+		return null;
+	}
 
 	public void stopUseItem() {
 		startTimer = -1;
