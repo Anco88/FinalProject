@@ -18,7 +18,7 @@ public class MainFrame extends JFrame {
 	public MainFrame(World world) {
 		setTitle("Game - Main menu");
 		this.world = world;
-		this.setSize(700,700);
+		this.setSize(1000,700);
 		this.setVisible(true);
 		setFocusable(true);
 
@@ -29,7 +29,7 @@ public class MainFrame extends JFrame {
 
 	private void init() {
 		contentPane = getContentPane();
-		//contentPane.setLayout(BorderLayout);
+		contentPane.setLayout(new BorderLayout());
 		setPanel(new MainPanel(this, world));
 		
 	}

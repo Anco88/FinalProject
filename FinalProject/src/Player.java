@@ -7,11 +7,13 @@ public class Player extends Character {
 	private int pickaxe = 1;
 	private int wall = 0;
 	private CurrentItem currentItem = new CurrentItem();
-
-	public Player(int x, int y, World world) {
+	private String name = "player";
+	public Player(int x, int y, World world, String name) {
 		super(x,y,world);
 		this.setType("human");
+		this.setName(name);
 		currentItem.add("pickaxe");
+		currentItem.add("wall");
 		pickWall();
 	}
 
@@ -103,6 +105,21 @@ public class Player extends Character {
 	public void stopUseItem() {
 		startTimer = -1;
 		
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getCurrentItem() {
+		return currentItem.getCurrent();
 	}
 	
 

@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -17,7 +18,7 @@ import javax.swing.JToggleButton;
 
 public class PlayPanel extends JPanel {
 	GamePanel panel;
-	JPanel buttonPanel;
+	JPanel buttonPanel, panelP1, panelP2;;
 	JPanel topButtons;
 	PlayerController p1, p2;
 	JButton backMainMenu = new JButton("Back to main menu");
@@ -31,6 +32,7 @@ public class PlayPanel extends JPanel {
 	public PlayPanel(MainFrame frame, World world) {
 		this.world = world;
 		this.frame = frame;
+		this.setLayout(new BorderLayout());
 		panel = new GamePanel(world);
 		
 		buttonPanel = new JPanel();
@@ -39,19 +41,25 @@ public class PlayPanel extends JPanel {
 		
 		u = new Update(panel, this);
 		
-		this.add(topButtons);
-		this.add(panel);
-		this.add(buttonPanel);
+		this.add(topButtons, BorderLayout.PAGE_START);
+		this.add(panel, BorderLayout.CENTER);
+		this.add(buttonPanel, BorderLayout.PAGE_END);
+
 		setFocusable(true);
 		grabFocus();
 		requestFocusInWindow();
 		//this.setPreferredSize(new Dimension(400,400));
-		this.setVisible(true);
+
 		
 		key = new KeyAction();
 		this.addKeyListener(key);
 		init();
 		initWorld();
+		panelP1 = new Playerinfo((Player) world.getCharacter(0));
+		panelP2 = new Playerinfo((Player) world.getCharacter(1));
+		this.add(panelP1, BorderLayout.LINE_START);
+		this.add(panelP2, BorderLayout.LINE_END);
+		this.setVisible(true);
 	}
 	
 	
@@ -62,7 +70,7 @@ public class PlayPanel extends JPanel {
 	}
 
 	private void initWorld() {
-		Player c = new Player(0, 0, world);
+		Player c = new Player(0, 0, world, "player");
 		Zombie z = new Zombie(0, 0, world);
 		Random rand = new Random();
 		Maze maze = world.getMaze();
@@ -85,7 +93,7 @@ public class PlayPanel extends JPanel {
 			pathPoints.remove(index);
 			int x = (int) (p.getX() * maze.getSIZE() + 0.5 * maze.getSIZE());
 			int y = (int) (p.getY() * maze.getSIZE() + 0.5 * maze.getSIZE());
-			c = new Player(x, y, world);
+			c = new Player(x, y, world, "player " + (i+1));
 			world.getCharacters().add(c);
 			
 		}
