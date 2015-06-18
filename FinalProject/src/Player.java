@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 
 public class Player extends Character  {
-	private ArrayList <Items> inventory = new ArrayList<Items>();
 	private long startTimer = -1;
 	private int pickaxe = 5;
 	private int wall = 0;
@@ -21,15 +20,6 @@ public class Player extends Character  {
 	private void change(){
 		setChanged();
 		notifyObservers();
-	}
-	
-	public ArrayList <Items> getInventory() {
-		return inventory;
-	}
-
-
-	public void setInventory(ArrayList <Items> inventory) {
-		this.inventory = inventory;
 	}
 
 	public void pickWall(){
