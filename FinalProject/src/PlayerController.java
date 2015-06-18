@@ -12,19 +12,20 @@ import java.util.TimerTask;
  */
 public class PlayerController implements Controller{
 	Long lastCheck;
-	int up, down, left, right;
+	int up, down, left, right, useItem;
 	ArrayList<Integer> pressed;
 	private Player player;
 
 	
 	
-	PlayerController(int up, int down, int left, int right, ArrayList<Integer> pressed, Player p){
+	PlayerController(int up, int down, int left, int right, int useItem, ArrayList<Integer> pressed, Player p){
 		this.up = up;
 		this.down = down;
 		this.left = left;
 		this.right = right;
 		this.player = p;
 		this.pressed = pressed;
+		this.useItem = useItem;
 		
 	}
 	
@@ -49,13 +50,20 @@ public class PlayerController implements Controller{
 		if(pressed.lastIndexOf(down) > lastUsefullIndex){
 			lastUsefullIndex = pressed.lastIndexOf(down);
 		}
-		if(lastUsefullIndex != -1){
-			move(pressed.get(lastUsefullIndex));
+		if(pressed.lastIndexOf(useItem) > lastUsefullIndex){
+			lastUsefullIndex = pressed.lastIndexOf(useItem);
 		}
+		if(lastUsefullIndex != -1){
+			action(pressed.get(lastUsefullIndex));
+		}
+		else{
+			player.stopUseItem();
+		}
+		
 		
 	}
 
-	private void move(Integer key) {
+	private void action(Integer key) {
 
 		if(key == up){
 			player.moveUp();
@@ -68,6 +76,13 @@ public class PlayerController implements Controller{
 		}	
 		if(key == right){
 			player.moveRight();
+		}
+		if(key == useItem){
+			player.useItem();
+			System.out.println("use item");
+		}
+		else{
+			player.stopUseItem();
 		}
 		
 	}

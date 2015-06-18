@@ -1,14 +1,110 @@
+import java.util.ArrayList;
+
 
 public class Player extends Character {
-	
-	
+	private ArrayList <Items> inventory = new ArrayList<Items>();
+	private long startTimer = -1;
+	private int pickaxe = 1;
+	private int wall = 0;
+	private CurrentItem currentItem = new CurrentItem();
 
 	public Player(int x, int y, World world) {
 		super(x,y,world);
 		this.setType("human");
+		currentItem.add("pickaxe");
+		pickWall();
 	}
 
-	Object inventory[];
+	
+	public ArrayList <Items> getInventory() {
+		return inventory;
+	}
+
+
+	public void setInventory(ArrayList <Items> inventory) {
+		this.inventory = inventory;
+	}
+
+	public void pickWall(){
+		if(pickaxe > 0){
+			if(getWallCloseBy() != null && getWallCloseBy().getType() == 1){
+				if(startTimer == -1){
+					startTimer = System.currentTimeMillis();
+					System.out.println("time start: " + startTimer);
+				}
+				else{
+					if(System.currentTimeMillis() - startTimer > 2000){
+						getWallCloseBy().setType(0);
+						wall++;
+						startTimer = -1;
+						System.out.println("break down the wall");
+					}
+				}
+			}
+		}
+		else{
+			System.out.println("no Pickaxe");
+		}
+	}
+
+
+	private MazePoint getWallCloseBy() {
+		double x = location.getX();
+		double y = location.getY();
+		System.out.println(direction);
+		switch (direction){
+			case 'n': 
+				y -= 7;
+				break;
+			case 's': 
+				y += 7;
+				break;
+			case 'e':
+				x += 7;
+				break;
+			case 'w':
+				x -= 7;
+				break;
+		}
+		
+		return world.getMaze().getMazeAt((int) x / world.getMaze().getSIZE(), (int) y / world.getMaze().getSIZE());
+		
+	}
+
+
+	public int getPickaxe() {
+		return pickaxe;
+	}
+
+
+	public void setPickaxe(int pickaxe) {
+		this.pickaxe = pickaxe;
+	}
+
+
+	public int getWall() {
+		return wall;
+	}
+
+
+	public void setWall(int wall) {
+		this.wall = wall;
+	}
+
+
+	public void useItem() {
+		if(currentItem.getCurrent()=="pickaxe"){
+			pickWall();
+		}
+		
+	}
+
+
+	public void stopUseItem() {
+		startTimer = -1;
+		
+	}
+	
 
 	
 }

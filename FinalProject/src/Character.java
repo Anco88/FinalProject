@@ -12,8 +12,8 @@ public class Character {
 	private String type = "";
 	World world = null;
 	private Color color = Color.RED;
-	Object direction;
-	private Point2D.Double location;
+	char direction = 'n';
+	protected Point2D.Double location;
 	
 	Character(){
 		 setLocation(new Point2D.Double());
@@ -34,7 +34,7 @@ public class Character {
 	public Object getDirection() {
 		return direction;
 	}
-	public void setDirection(Object direction) {
+	public void setDirection(char direction) {
 		this.direction = direction;
 	}
 
@@ -52,6 +52,7 @@ public class Character {
 		if(canMove(p)){
 			this.setLocation(p);
 		}
+		direction = 'w';
 	}
 
 
@@ -62,6 +63,7 @@ public class Character {
 		if(canMove(p)){
 			this.setLocation(p);
 		}
+		direction = 's';
 		
 	}
 
@@ -70,8 +72,17 @@ public class Character {
 		if(canMove(p)){
 			this.setLocation(p);
 		}
-		
+		direction = 'n';
 	}
+	
+	public void moveRight() {
+		Point2D.Double p = new Point2D.Double(this.getLocation().getX()+1, this.getLocation().getY() );
+		if(canMove(p)){
+			this.setLocation(p);
+		}
+		direction = 'e';
+	}
+
 
 	private boolean canMove(Double p) {
 		Ellipse2D.Double c = new Ellipse2D.Double(p.getX()-5, p.getY()-5, 10, 10);
@@ -100,13 +111,6 @@ public class Character {
 		return true;
 	}
 
-	public void moveRight() {
-		Point2D.Double p = new Point2D.Double(this.getLocation().getX()+1, this.getLocation().getY() );
-		if(canMove(p)){
-			this.setLocation(p);
-		}
-		
-	}
 
 	public Color getColor() {
 		return color;

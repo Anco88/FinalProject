@@ -47,7 +47,10 @@ public class Maze {
 	}
 	
 	public MazePoint getMazeAt(int a, int b){
+		if (exist(a, b)){
 		return maze[a][b];
+		}
+		return null;
 	}
 	
 	public void setMazeAt(int a, int b, MazePoint o){
@@ -140,5 +143,12 @@ public class Maze {
 	private void setName(String inLine) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean exist(int x, int y) {
+	  if(x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT){
+		  return true;
+	  }
+		return false;
 	}
 }
