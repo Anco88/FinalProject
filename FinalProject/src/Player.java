@@ -6,6 +6,7 @@ public class Player extends Character  {
 	private long startTimer = -1;
 	private int pickaxe = 5;
 	private int wall = 0;
+	private Boolean hasWon = false;
 	private CurrentItem currentItem = new CurrentItem();
 	private String name = "player";
 	public Player(int x, int y, World world, String name) {
@@ -131,7 +132,16 @@ public class Player extends Character  {
 	public String getCurrentItem() {
 		return currentItem.getCurrent();
 	}
-	
 
+	public Boolean getHasWon() {
+		return hasWon;
+	}
+
+	public void setHasWon(Boolean hasWon) {
+		this.hasWon = hasWon;
+		if(hasWon){
+			change();			
+		}
+	}
 	
 }

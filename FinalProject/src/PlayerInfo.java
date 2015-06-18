@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -9,9 +10,11 @@ import javax.swing.JPanel;
 
 public class PlayerInfo extends JPanel implements Observer {
 	private Player p;
-	private JLabel label, item, numPick, numWall;
+	private JLabel label, item, numPick, numWall, winner;
 	
 	public PlayerInfo(Player p){
+		winner = new JLabel("WINNER");
+		winner.setFont(new Font("Serif", Font.PLAIN, 20));
 		this.p = p;
 		this.setPreferredSize(new Dimension(200,400));
 		p.addObserver(this);
@@ -29,6 +32,9 @@ public class PlayerInfo extends JPanel implements Observer {
 		numPick.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		this.add(numWall);
 		numWall.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		this.add(winner);
+		winner.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		winner.setVisible(false);
 
 	}
 
@@ -37,6 +43,11 @@ public class PlayerInfo extends JPanel implements Observer {
 		item.setText("Current: " + p.getCurrentItem());
 		numPick.setText("Pickaxes: " + p.getPickaxe());
 		numWall.setText("Walls: " + p.getWall());
+		if(p.getHasWon()){
+			System.out.println("winner " + p);
+			
+			winner.setVisible(true);
+		}
 	}
 	
 

@@ -26,6 +26,8 @@ public class Update extends TimerTask {
 	public void checkEnd() {
 		if(panel.getWorld().getCharacters().size() - panel.getWorld().getSettings().getNumberOfZombies() <= 1){
 			System.out.println("GAME OVER");
+			Player p = (Player) panel.getWorld().getCharacter(0);
+			p.setHasWon(true);
 			playPanel.stopTimer();
 		}
 		
