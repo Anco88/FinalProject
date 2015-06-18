@@ -38,7 +38,7 @@ public class Update extends TimerTask {
 		//System.out.println(controllers);
 		
 		for(Object  c: controllers){
-			//System.out.println("contoller: "+c);
+			//System.out.println("Controller: "+c);
 			((Controller) c).update();
 			
 		}

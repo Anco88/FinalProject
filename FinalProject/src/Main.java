@@ -18,6 +18,6 @@ public class Main {
 		//frame = new GameFrame(world);
 		frame = new MainFrame(world);
 		world.setFrame(frame);
-		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
