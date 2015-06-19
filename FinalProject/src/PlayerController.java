@@ -29,8 +29,8 @@ public class PlayerController implements Controller{
 
 	
 	
-	PlayerController(int up, int down, int left, int right, int useItem, int nextItem, ArrayList<Integer> pressed, 
-			Player p, JPanel panel){
+	PlayerController(int up, int down, int left, int right, int useItem, int nextItem, 
+						ArrayList<Integer> pressed, Player p, JPanel panel){
 		this.up = up;
 		this.down = down;
 		this.left = left;
@@ -42,16 +42,12 @@ public class PlayerController implements Controller{
 		this.nextItem = nextItem;
 		InputMap im = panel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = panel.getActionMap();
-		
 		im.put(KeyStroke.getKeyStroke(nextItem, 0), this);        
-
 	    am.put(this, new ChangeItem(p, this));
-
-		
 	}
 	
+	// innerclass to handle keyinput of changeItem
 	public class ChangeItem extends AbstractAction {
-
 	    private Player p;
 	    private PlayerController c;
 
@@ -68,15 +64,14 @@ public class PlayerController implements Controller{
 	}
 	
 	
-	// need to implemented futher, will be used to change distance travelled
+	// need to implemented further, will be used to change distance travelled
 	public void setLastCheck(Long time){
 		lastCheck = time;
 		//System.out.println(time);
 	}
 
-
 	public void update() {
-		//System.out.println(System.nanoTime());
+		//check which of assigned keys to controller was pressed last
 		int lastUsefullIndex=-1;
 		if(pressed.lastIndexOf(up) > lastUsefullIndex){
 			lastUsefullIndex = pressed.lastIndexOf(up);
@@ -99,8 +94,6 @@ public class PlayerController implements Controller{
 		else{
 			player.stopUseItem();
 		}
-		
-		
 	}
 
 	private void action(Integer key) {
@@ -123,11 +116,6 @@ public class PlayerController implements Controller{
 		}
 		else{
 			player.stopUseItem();
-		}
-		
+		}	
 	}
-
-
-
-
 }

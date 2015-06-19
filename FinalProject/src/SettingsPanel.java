@@ -16,10 +16,10 @@ import javax.swing.JTextField;
  *
  */
 public class SettingsPanel extends JPanel {
-	World w;
-	JLabel pLabel, zLabel;
-	JTextField pText, zText;
-	JButton pButton, zButton;
+	private World w;
+	private JLabel pLabel, zLabel;
+	private JTextField pText, zText;
+	private JButton pButton, zButton;
 	
 	SettingsPanel(World world){
 		this.w = world;
@@ -31,7 +31,6 @@ public class SettingsPanel extends JPanel {
 		this.add(zText, BorderLayout.NORTH);
 		this.add(zButton, BorderLayout.NORTH);
 		
-
 		zButton.addActionListener(
 				new ActionListener(){
 					public void actionPerformed (ActionEvent e){
@@ -42,5 +41,4 @@ public class SettingsPanel extends JPanel {
 		);
 		this.setVisible(true);
 	}
-
 }

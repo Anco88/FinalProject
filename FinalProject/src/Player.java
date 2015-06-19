@@ -1,8 +1,6 @@
 import java.awt.geom.Ellipse2D;
-import java.util.ArrayList;
 
-
-public class Player extends Character  {
+public class Player extends Character {
 	private long startTimer = -1;
 	private int pickaxe = 5;
 	private int wall = 0;
@@ -24,7 +22,6 @@ public class Player extends Character  {
 	}
 
 	public void pickWall(){
-		//System.out.println("pickwall");
 		if(pickaxe > 0){
 			if(getWallCloseBy() != null && getWallCloseBy().getType() == 1){
 				//System.out.println("test");
@@ -45,16 +42,13 @@ public class Player extends Character  {
 				}
 			}
 		}
-		else{
-			System.out.println("no Pickaxe");
-		}
 	}
 
 
 	private MazePoint getWallCloseBy() {
 		double x = location.getX();
 		double y = location.getY();
-		System.out.println(direction);
+		//System.out.println(direction);
 		switch (direction){
 			case 'n': 
 				y -= 7;
@@ -70,45 +64,36 @@ public class Player extends Character  {
 				break;
 		}
 		MazePoint p = world.getMaze().getMazeAt((int) x / world.getMaze().getSIZE(), (int) y / world.getMaze().getSIZE()); 
-		System.out.println(p + " : " + p.getType());
+		//System.out.println(p + " : " + p.getType());
 		return p;
 		
 	}
-
 
 	public int getPickaxe() {
 		return pickaxe;
 	}
 
-
 	public void setPickaxe(int pickaxe) {
 		this.pickaxe = pickaxe;
 	}
-
 
 	public int getWall() {
 		return wall;
 	}
 
-
 	public void setWall(int wall) {
 		this.wall = wall;
 	}
-
 
 	public void useItem() {
 		
 		switch(currentItem.getCurrent()){
 		case "pickaxe":	pickWall();
-		//				System.out.println("pcik wall");
 						break;
 		case "wall": 	buildWall();
-		//System.out.println("Buildwall");
 						break;
 		}
-		
 	}
-
 
 	private void buildWall() {
 		MazePoint m = canBuildWall();
@@ -126,8 +111,7 @@ public class Player extends Character  {
 						checkLocationAfterBuildWall(m);
 						m.setType(1);
 						wall--;
-						change();
-						
+						change();	
 						startTimer = -1;
 						System.out.println("break down the wall");
 					}
@@ -236,5 +220,4 @@ public class Player extends Character  {
 			change();			
 		}
 	}
-	
 }

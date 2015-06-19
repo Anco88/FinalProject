@@ -50,7 +50,6 @@ public class ZombieController implements Controller {
 			else{ zombie.moveRight();}
 		}
 		
-		
 		for(Character c : temp){
 			if(c.getType() == "human" && zombie.getLocation().distance(c.getLocation()) < 10){
 				System.out.println("remove" + c);
@@ -58,5 +57,4 @@ public class ZombieController implements Controller {
 			}
 		}
 	}
-
 }

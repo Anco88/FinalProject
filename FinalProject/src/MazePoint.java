@@ -10,10 +10,8 @@ import java.awt.Rectangle;
  *
  */
 public class MazePoint {
-	int type;
-	Rectangle rectangle;
-	
-	
+	private int type;
+	private Rectangle rectangle;
 	
 	public MazePoint(int type, Rectangle rectangle) {
 		super();

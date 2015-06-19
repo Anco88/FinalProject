@@ -25,14 +25,14 @@ public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Maze maze;
 	private World world;
-	public static int EDITMODE = 1;
-	public static int PLAYMODE = 0;
-	private int mode;
+	// EDITMODE and PLAYMODE used to create easier use of setMode() method
+	public static final int EDITMODE = 1;
+	public static final int PLAYMODE = 0;
+	private int mode; // used to decide if characters must be shown
 	
 	GamePanel(){
 		mode = PLAYMODE;
 		this.setPreferredSize(new Dimension(602,602));
-		//this.model = model;
 	}
 	
 	GamePanel(World world){

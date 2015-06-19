@@ -32,7 +32,6 @@ public class MainPanel extends JPanel {
 		start = new JButton("Start game");
 		editor = new JButton("Edit maze");
 		init();
-	
 	}
 	
 	public MainPanel(MainFrame frame){
@@ -50,10 +49,10 @@ public class MainPanel extends JPanel {
 		topPanel.add(start);
 		topPanel.add(editor);
 		add(topPanel, BorderLayout.NORTH);
-		add(settingsPanel, BorderLayout.CENTER);
-				
+		add(settingsPanel, BorderLayout.CENTER);			
 	}
 	
+	// adds methods to buttons
 	private void init(){
 		start.addActionListener(
 				new ActionListener(){

@@ -87,10 +87,8 @@ public class Maze {
 			}
 	}
 
-	
 	public void save(String filename) {
 		save(filename, "untitled");
-		
 	}
 
 	public void load(String filename){
@@ -135,9 +133,7 @@ public class Maze {
 			i++;
 			
 		}
-		
 		System.out.println();
-		
 	}
 
 	private void setName(String inLine) {
@@ -145,6 +141,7 @@ public class Maze {
 		
 	}
 
+	// checks if the x, y exists in the maze
 	public boolean exist(int x, int y) {
 	  if(x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT){
 		  return true;

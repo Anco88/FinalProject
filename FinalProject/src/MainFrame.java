@@ -30,10 +30,8 @@ public class MainFrame extends JFrame {
 	private void init() {
 		contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
-		setPanel(new MainPanel(this, world));
-		
+		setPanel(new MainPanel(this, world));	
 	}
-
 
 	public void setPanel(EditPanel editPanel) {
 		System.out.println("test");
@@ -54,9 +52,7 @@ public class MainFrame extends JFrame {
 		contentPane.removeAll();
 		contentPane.add(playPanel);
 		this.setVisible(true);
-		
 	}
-
 
 	public KeyAction getKeyAction() {
 		return key;

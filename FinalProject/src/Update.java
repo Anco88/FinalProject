@@ -30,21 +30,15 @@ public class Update extends TimerTask {
 			p.setHasWon(true);
 			playPanel.stopTimer();
 		}
-		
 	}
 
 	@Override
 	public void run() {
-		//System.out.println(controllers);
-		
 		for(Object  c: controllers){
 			//System.out.println("Controller: "+c);
 			((Controller) c).update();
-			
 		}
 		checkEnd();
 		panel.repaint();
-		
 	}
-
 }
