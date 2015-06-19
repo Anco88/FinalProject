@@ -29,6 +29,7 @@ public class EditPanel extends JPanel {
 	public EditPanel(World world) {
 		this.world = world;
 		panel = new GamePanel(world);
+		panel.setMode(GamePanel.EDITMODE);
 		
 		buttonPanel = new JPanel();
 		topButtons = new JPanel();
@@ -66,6 +67,7 @@ public class EditPanel extends JPanel {
 		this.mode = mode;
 	}
 	
+	// create actions for the buttons
 	public void init(){
 		makeWall.addActionListener(
 				new ActionListener(){
@@ -95,7 +97,7 @@ public class EditPanel extends JPanel {
 				new ActionListener(){
 					public void actionPerformed (ActionEvent e){
 						world.getMaze().load("maze.txt");
-						System.out.println("load maze");
+						panel.repaint();
 					}
 				}
 		);
@@ -107,5 +109,4 @@ public class EditPanel extends JPanel {
 				}
 		);
 	}
-
 }

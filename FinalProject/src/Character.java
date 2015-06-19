@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
@@ -14,7 +13,7 @@ import java.util.Observable;
  */
 public abstract class Character extends Observable{
 	protected int speed=0; // not used yet
-	private String type = "";
+	protected String type = "";
 	protected World world = null;
 	private Color color = Color.RED;
 	protected char direction = 'n';

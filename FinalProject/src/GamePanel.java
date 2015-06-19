@@ -25,13 +25,14 @@ public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Maze maze;
 	private World world;
+	public static int EDITMODE = 1;
+	public static int PLAYMODE = 0;
+	private int mode;
 	
 	GamePanel(){
-
+		mode = PLAYMODE;
 		this.setPreferredSize(new Dimension(602,602));
 		//this.model = model;
-
-		
 	}
 	
 	GamePanel(World world){
@@ -39,21 +40,20 @@ public class GamePanel extends JPanel {
 		this.maze = world.getMaze();
 		this.world = world;
 		repaint();
-		
 	}
 	
+	public void setMode(int mode){
+		this.mode = mode;
+	}
 	
 @Override
 	public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D)g;
 
-	   // Assume x, y, and diameter are instance variables.
-   		g.setColor(Color.LIGHT_GRAY);
-		
-		for(int i = 0; i < maze.getHEIGHT();i++){
+	   	for(int i = 0; i < maze.getHEIGHT();i++){
 			for(int j = 0; j < maze.getWIDTH(); j++){
-				//g.drawRect(i*maze.getSIZE(), j*maze.getSIZE(), maze.getSIZE(), maze.getSIZE());
+				g.setColor(Color.LIGHT_GRAY);
 				g2d.draw(maze.getMaze()[i][j].getRectangle());
 				if(maze.getMaze()[i][j].getType() == 1){
 					g.setColor(Color.GRAY);
@@ -62,13 +62,13 @@ public class GamePanel extends JPanel {
 				}
 			}
 		}
-		
-		for(Character c : world.getCharacters()){
-			Ellipse2D.Double circle = new Ellipse2D.Double(c.getLocation().getX()-5, c.getLocation().getY()-5, 10, 10);
-			g.setColor(c.getColor());
-			g2d.fill(circle);
+		if(mode == PLAYMODE){
+			for(Character c : world.getCharacters()){
+				Ellipse2D.Double circle = new Ellipse2D.Double(c.getLocation().getX()-5, c.getLocation().getY()-5, 10, 10);
+				g.setColor(c.getColor());
+				g2d.fill(circle);
+			}
 		}
-		
 	}
 
 	public World getWorld() {

@@ -36,9 +36,8 @@ public class Maze {
 	MazePoint[][]	maze =  new MazePoint[HEIGHT][WIDTH];
 	
 	Maze(){
-	
+		// create new maze with MazePoints();
 		for(int i = 0; i < HEIGHT;i++){
-			
 			for(int j = 0; j < WIDTH; j++){
 				maze[i][j] = new MazePoint(0 ,new Rectangle(i*SIZE, j*SIZE,SIZE, SIZE));
 			}
@@ -46,6 +45,7 @@ public class Maze {
 		}
 	}
 	
+	// return a specific MazePoint at a,b
 	public MazePoint getMazeAt(int a, int b){
 		if (exist(a, b)){
 			return maze[a][b];
