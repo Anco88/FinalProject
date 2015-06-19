@@ -10,7 +10,6 @@ import java.util.Random;
  *
  */
 public class ZombieController implements Controller {
-	
 	private Zombie zombie;
 	private World world;
 

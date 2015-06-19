@@ -1,6 +1,6 @@
-Gives errors when clicking outside maze in edit maze mode.
+Gives errors when clicking outside maze in edit maze mode. // fixed
 Borders visible when playing game (fixed, light gray now)
 
-Maze isn't updated after loading maze
+Maze isn't updated after loading maze // fixed
 When there is no maze.txt in the folder it throws java.io.FileNotFoundException exception
 Not testen when there are more chars than empty spaces on maze
