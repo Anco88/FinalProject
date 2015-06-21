@@ -1,24 +1,15 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * 
- */
-
-/**
- * @author anco
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
-public class MainPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+public class MainPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private MainFrame frame;
 	private JPanel topPanel;

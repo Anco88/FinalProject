@@ -7,33 +7,33 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
-
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
 
 public class Maze {
-	int HEIGHT = 30;
-	int WIDTH = 30;
-	int SIZE = 20;
+	static int  HEIGHT = 30;
+	static int WIDTH = 30;
+	static int SIZE = 20;
+	MazePoint[][] maze =  new MazePoint[HEIGHT][WIDTH];
 	String name;
 	
-	public int getHEIGHT() {
+	public int getHeigt() {
 		return HEIGHT;
 	}
 
-	public int getWIDTH() {
+	public int getWidth() {
 		return WIDTH;
 	}
 
-	public int getSIZE() {
+	public int getSize() {
 		return SIZE;
 	}
 
 	public MazePoint[][] getMaze() {
 		return maze;
 	}
-
-	
-	
-	MazePoint[][]	maze =  new MazePoint[HEIGHT][WIDTH];
 	
 	Maze(){
 		// create new maze with MazePoints();

@@ -2,11 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.geom.Ellipse2D;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -14,14 +10,11 @@ import javax.swing.JPanel;
  */
 
 /**
- * @author s2614154
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
 public class GamePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Maze maze;
 	private World world;
@@ -46,13 +39,17 @@ public class GamePanel extends JPanel {
 		this.mode = mode;
 	}
 	
-@Override
+	public World getWorld() {
+		return world;
+	}
+	
+	@Override
 	public void paintComponent(Graphics g){
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D)g;
 
-	   	for(int i = 0; i < maze.getHEIGHT();i++){
-			for(int j = 0; j < maze.getWIDTH(); j++){
+	   	for(int i = 0; i < maze.getHeigt();i++){
+			for(int j = 0; j < maze.getWidth(); j++){
 				g.setColor(Color.LIGHT_GRAY);
 				g2d.draw(maze.getMaze()[i][j].getRectangle());
 				if(maze.getMaze()[i][j].getType() == 1){
@@ -71,7 +68,4 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	public World getWorld() {
-		return world;
-	}
 }

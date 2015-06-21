@@ -2,11 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * 
- */
-
-/**
- * @author s2612925
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
 public class ZombieController implements Controller {
@@ -24,7 +20,7 @@ public class ZombieController implements Controller {
 	@Override
 	public void update() {
 		Random random = new Random();
-		ArrayList<Character> temp = (ArrayList<Character>) world.getCharacters().clone();
+		ArrayList<Character> temp =  (ArrayList<Character>) world.getCharacters().clone();
 		Character closest =  null;
 		double distance = -1;
 		for(Character c : temp){

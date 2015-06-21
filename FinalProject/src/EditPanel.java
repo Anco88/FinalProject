@@ -2,32 +2,34 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
 public class EditPanel extends JPanel {
-	int mode = 0;
-	MouseAction mouse;
-	GamePanel panel;
-	JPanel buttonPanel;
-	JPanel topButtons;
-	JButton backMainMenu = new JButton("Back to main menu");
-	JToggleButton makeWall = new JToggleButton("Wall");
-	JToggleButton makePath = new JToggleButton("Path");
-	JButton save = new JButton("Save");
-	JButton load = new JButton("Load");
-	ButtonGroup btnGroup = new ButtonGroup();
-	
-	
+	private static final long serialVersionUID = -1778575427764855997L;
+	private int mode = 0;
+	private MouseAction mouse;
+	private GamePanel panel;
+	private JPanel buttonPanel, topButtons;
+	private JButton backMainMenu = new JButton("Back to main menu");
+	private JToggleButton makeWall = new JToggleButton("Wall");
+	private JToggleButton makePath = new JToggleButton("Path");
+	private JButton save = new JButton("Save");
+	private JButton load = new JButton("Load");
+	private ButtonGroup btnGroup = new ButtonGroup();
 	private World world;
 	private MainFrame frame;
 
-	public EditPanel(World world) {
+	public EditPanel(MainFrame mainFrame, World world) {
 		this.world = world;
+		this.frame = mainFrame;
+		
 		panel = new GamePanel(world);
 		panel.setMode(GamePanel.EDITMODE);
 		
@@ -41,22 +43,20 @@ public class EditPanel extends JPanel {
 		btnGroup.add(makeWall);
 		btnGroup.add(makePath);
 		makePath.doClick();
-		this.setLayout(new BorderLayout());
-		this.add(topButtons, BorderLayout.NORTH);
-		this.add(panel, BorderLayout.CENTER);
-		this.add(buttonPanel, BorderLayout.SOUTH);
+		
+		setLayout(new BorderLayout());
+		add(topButtons, BorderLayout.NORTH);
+		add(panel, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.SOUTH);
 		
 		panel.setPreferredSize(new Dimension(602,602));
-		this.setVisible(true);
+		setVisible(true);
+		
 		mouse = new MouseAction(world, this);
 		panel.addMouseMotionListener(mouse);
 		panel.addMouseListener(mouse);
+		
 		init();
-	}
-
-	public EditPanel(MainFrame mainFrame, World world) {
-		this(world);
-		this.frame = mainFrame;
 	}
 
 	public int getMode() {

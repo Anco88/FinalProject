@@ -2,11 +2,7 @@ import java.util.ArrayList;
 import java.util.TimerTask;
 
 /**
- * 
- */
-
-/**
- * @author s2612925
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
 public class Update extends TimerTask {
@@ -35,7 +31,6 @@ public class Update extends TimerTask {
 	@Override
 	public void run() {
 		for(Object  c: controllers){
-			//System.out.println("Controller: "+c);
 			((Controller) c).update();
 		}
 		checkEnd();

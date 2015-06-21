@@ -1,9 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.FlowLayout;
-
 import javax.swing.JFrame;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
 
 public class MainFrame extends JFrame {
 	KeyAction key = null;
@@ -16,10 +18,10 @@ public class MainFrame extends JFrame {
 	private World world;
 	
 	public MainFrame(World world) {
-		setTitle("Game - Main menu");
+		setTitle("Zombie Game - Main menu");
 		this.world = world;
-		this.setSize(1000,700);
-		this.setVisible(true);
+		setSize(1000,700);
+		setVisible(true);
 		setFocusable(true);
 
 		key = new KeyAction();
@@ -34,24 +36,24 @@ public class MainFrame extends JFrame {
 	}
 
 	public void setPanel(EditPanel editPanel) {
-		System.out.println("test");
+		setTitle("Zombie Game - Edit Maze");
 		contentPane.removeAll();
 		contentPane.add(editPanel);
-		this.setVisible(true);
+		setVisible(true);
 	}
 	
 	public void setPanel(MainPanel main) {
-		System.out.println("Going back to main panel");
 		contentPane.removeAll();
 		contentPane.add(main);
-		this.setVisible(true);
+		setTitle("Zombie Game - Main menu");
+		setVisible(true);
 	}
 
 	public void setPanel(PlayPanel playPanel) {
-		System.out.println("Going to playpanel");
+		setTitle("Zombie Game - Play");
 		contentPane.removeAll();
 		contentPane.add(playPanel);
-		this.setVisible(true);
+		setVisible(true);
 	}
 
 	public KeyAction getKeyAction() {

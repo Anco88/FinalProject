@@ -1,5 +1,9 @@
 import javax.swing.JFrame;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
 
 public class Main {
 	static MainFrame frame;
@@ -13,7 +17,6 @@ public class Main {
 		maze = new Maze();
 		world = new World();
 		world.setMaze(maze);
-		//frame = new GameFrame(world);
 		frame = new MainFrame(world);
 		world.setFrame(frame);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

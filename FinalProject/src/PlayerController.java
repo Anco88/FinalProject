@@ -1,24 +1,16 @@
-import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.TimerTask;
-
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 /**
- * 
- */
-
-/**
- * @author s2612925
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
+
 public class PlayerController implements Controller{
 	Long lastCheck;
 	private int up, down, left, right, useItem;
@@ -27,8 +19,6 @@ public class PlayerController implements Controller{
 	private JPanel panel;
 	private int nextItem;
 
-	
-	
 	PlayerController(int up, int down, int left, int right, int useItem, int nextItem, 
 						ArrayList<Integer> pressed, Player p, JPanel panel){
 		this.up = up;
@@ -42,13 +32,14 @@ public class PlayerController implements Controller{
 		this.nextItem = nextItem;
 		InputMap im = panel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = panel.getActionMap();
-		im.put(KeyStroke.getKeyStroke(nextItem, 0), this);        
+		im.put(KeyStroke.getKeyStroke(this.nextItem, 0), this);        
 	    am.put(this, new ChangeItem(p, this));
 	}
 	
-	// innerclass to handle keyinput of changeItem
+	// inner class to handle key input of changeItem
 	public class ChangeItem extends AbstractAction {
-	    private Player p;
+		private static final long serialVersionUID = 1L;
+		private Player p;
 	    private PlayerController c;
 
 	    public ChangeItem(Player p, PlayerController c) {
@@ -97,7 +88,6 @@ public class PlayerController implements Controller{
 	}
 
 	private void action(Integer key) {
-
 		if(key == up){
 			player.moveUp();
 		}	

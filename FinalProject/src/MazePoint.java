@@ -2,13 +2,10 @@ import java.awt.Rectangle;
 
 
 /**
- * 
- */
-
-/**
- * @author s2612925
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
+
 public class MazePoint {
 	private int type;
 	private Rectangle rectangle;

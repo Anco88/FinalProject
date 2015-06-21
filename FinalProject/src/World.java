@@ -1,12 +1,7 @@
-import java.awt.Frame;
 import java.util.ArrayList;
 
 /**
- * 
- */
-
-/**
- * @author anco
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
 public class World {

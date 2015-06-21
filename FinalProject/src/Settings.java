@@ -1,11 +1,8 @@
 /**
- * 
- */
-
-/**
- * @author anco
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
  */
+
 public class Settings {
 	private int numberOfPlayers;
 	//private int numberOfAI;		not used yet

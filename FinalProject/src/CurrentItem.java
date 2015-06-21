@@ -1,4 +1,10 @@
 import java.util.ArrayList;
+
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
+
 public class CurrentItem {
 	private int current = 0;
 	private ArrayList<String> array = new ArrayList<String>();

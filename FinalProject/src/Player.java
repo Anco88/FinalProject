@@ -1,5 +1,10 @@
 import java.awt.geom.Ellipse2D;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
+
 public class Player extends Character {
 	private long startTimer = -1;
 	private int pickaxe = 5;
@@ -9,8 +14,8 @@ public class Player extends Character {
 	private String name = "player";
 	public Player(int x, int y, World world, String name) {
 		super(x,y,world);
-		this.setType("human");
-		this.setName(name);
+		setType("human");
+		setName(name);
 		currentItem.add("pickaxe");
 		currentItem.add("wall");
 		pickWall();
@@ -24,13 +29,11 @@ public class Player extends Character {
 	public void pickWall(){
 		if(pickaxe > 0){
 			if(getWallCloseBy() != null && getWallCloseBy().getType() == 1){
-				//System.out.println("test");
 				if(startTimer == -1){
 					startTimer = System.currentTimeMillis();
 					System.out.println("time start: " + startTimer);
 				}
 				else{
-					//System.out.println(System.currentTimeMillis());
 					if(System.currentTimeMillis() - startTimer > 20){
 						getWallCloseBy().setType(0);
 						wall++;
@@ -63,8 +66,7 @@ public class Player extends Character {
 				x -= 7;
 				break;
 		}
-		MazePoint p = world.getMaze().getMazeAt((int) x / world.getMaze().getSIZE(), (int) y / world.getMaze().getSIZE()); 
-		//System.out.println(p + " : " + p.getType());
+		MazePoint p = world.getMaze().getMazeAt((int) x / world.getMaze().getSize(), (int) y / world.getMaze().getSize()); 
 		return p;
 		
 	}
@@ -155,16 +157,16 @@ public class Player extends Character {
 		}
 		
 		// check if player is in good half of square
-		n = n % world.getMaze().getSIZE();
-		if( (direction == 'n' || direction == 'w') && n >= world.getMaze().getSIZE()/2){
+		n = n % world.getMaze().getSize();
+		if( (direction == 'n' || direction == 'w') && n >= world.getMaze().getSize()/2){
 			return null;
 		}
-		if( (direction == 's' || direction == 'e') && n <= world.getMaze().getSIZE()/2){
+		if( (direction == 's' || direction == 'e') && n <= world.getMaze().getSize()/2){
 			return null;
 		}
 		// check if there is no wall in square next to it
-		x = x / world.getMaze().getSIZE();
-		y = y / world.getMaze().getSIZE();
+		x = x / world.getMaze().getSize();
+		y = y / world.getMaze().getSize();
 		
 		switch(direction){
 			case 'n': 	y -= 1;

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 
 public class PlayPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private GamePanel panel;
 	private JPanel buttonPanel, panelP1, panelP2;;
 	private JPanel topButtons;
@@ -68,8 +69,8 @@ public class PlayPanel extends JPanel {
 		Random rand = new Random();
 		Maze maze = world.getMaze();
 		ArrayList<Point> pathPoints = new ArrayList<Point>();
-		for(int i = 0; i < maze.getHEIGHT();i++){
-			for(int j = 0; j < maze.getWIDTH(); j++){
+		for(int i = 0; i < maze.getHeigt();i++){
+			for(int j = 0; j < maze.getWidth(); j++){
 				if(maze.getMazeAt(i, j).getType() == 0){
 					pathPoints.add(new Point(i, j));
 				}
@@ -82,22 +83,18 @@ public class PlayPanel extends JPanel {
 			System.out.println();
 			Point p = pathPoints.get(index);
 			pathPoints.remove(index);
-			int x = (int) (p.getX() * maze.getSIZE() + 0.5 * maze.getSIZE());
-			int y = (int) (p.getY() * maze.getSIZE() + 0.5 * maze.getSIZE());
+			int x = (int) (p.getX() * maze.getSize() + 0.5 * maze.getSize());
+			int y = (int) (p.getY() * maze.getSize() + 0.5 * maze.getSize());
 			c = new Player(x, y, world, "player " + (i+1));
 			world.getCharacters().add(c);
 			
 		}
-		System.out.println(pathPoints);
 		System.out.println(world.getCharacters());
 		System.out.println(world.getCharacters().get(0).getLocation());
-		System.out.println("Keys " + frame);
-		System.out.println(c);
 		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_P, KeyEvent.VK_O, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(0), this);
 		world.getCharacter(0).setColor(Color.GREEN);
 		p2 = new PlayerController(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D,KeyEvent.VK_T, KeyEvent.VK_R, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(1), this);
 		world.getCharacter(1).setColor(Color.BLUE);
-		
 		
 		for(int i = 0; i < world.getSettings().getNumberOfZombies(); i++){
 			int index = rand.nextInt(pathPoints.size());
@@ -105,8 +102,8 @@ public class PlayPanel extends JPanel {
 			System.out.println();
 			Point p = pathPoints.get(index);
 			pathPoints.remove(index);
-			int x = (int) (p.getX() * maze.getSIZE() + 0.5 * maze.getSIZE());
-			int y = (int) (p.getY() * maze.getSIZE() + 0.5 * maze.getSIZE());
+			int x = (int) (p.getX() * maze.getSize() + 0.5 * maze.getSize());
+			int y = (int) (p.getY() * maze.getSize() + 0.5 * maze.getSize());
 			z = new Zombie(x, y, world);
 			world.getCharacters().add(z);
 			z.setColor(Color.RED);
@@ -124,7 +121,6 @@ public class PlayPanel extends JPanel {
 		panel.repaint();
 		timer = new Timer(true);
 		timer.schedule(u, 0, 10);
-		
 	}
 	
 	public Timer getTimer(){
@@ -154,8 +150,6 @@ public class PlayPanel extends JPanel {
 					}
 				}
 		);
-		
 	}
 	
-
 }

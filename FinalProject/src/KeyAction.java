@@ -2,12 +2,20 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
+
 public class KeyAction extends KeyAdapter {
 	private ArrayList<Integer> pressedKeys  = new ArrayList<Integer>();
 	
 	KeyAction(){
 		super();
-		//System.out.println("keylisteren done");
+	}
+	
+	public ArrayList<Integer> getPressedKeys(){
+		return pressedKeys;
 	}
 	
 	@Override
@@ -25,7 +33,4 @@ public class KeyAction extends KeyAdapter {
 		//System.out.println(pressedKeys);
 	}
 	
-	public ArrayList<Integer> getPressedKeys(){
-		return pressedKeys;
-	}
 }

@@ -2,13 +2,17 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ */
 
 public class PlayerInfo extends JPanel implements Observer {
+	private static final long serialVersionUID = 1L;
 	private Player p;
 	private JLabel label, item, numPick, numWall, winner;
 	
@@ -16,23 +20,22 @@ public class PlayerInfo extends JPanel implements Observer {
 		winner = new JLabel("WINNER");
 		winner.setFont(new Font("Serif", Font.PLAIN, 20));
 		this.p = p;
-		this.setPreferredSize(new Dimension(200,400));
+		setPreferredSize(new Dimension(200,400));
 		p.addObserver(this);
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		label = new JLabel(p.getName());
 		item = new JLabel("Current: " + p.getCurrentItem());
 		numPick = new JLabel("Pickaxes: " + p.getPickaxe());
 		numWall = new JLabel("Walls: "+ p.getWall());
-		this.add(label);
+		add(label);
 		label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		this.add(item);
+		add(item);
 		item.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-
-		this.add(numPick);
+		add(numPick);
 		numPick.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		this.add(numWall);
+		add(numWall);
 		numWall.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		this.add(winner);
+		add(winner);
 		winner.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		winner.setVisible(false);
 
@@ -45,7 +48,6 @@ public class PlayerInfo extends JPanel implements Observer {
 		numWall.setText("Walls: " + p.getWall());
 		if(p.getHasWon()){
 			System.out.println("winner " + p);
-			
 			winner.setVisible(true);
 		}
 	}

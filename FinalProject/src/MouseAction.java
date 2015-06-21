@@ -1,4 +1,3 @@
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,8 +13,8 @@ public class MouseAction extends MouseAdapter {
 	}
 	
 	private void action(MouseEvent e){
-		int y = e.getY()/ world.getMaze().getSIZE();
-		int x = e.getX()/ world.getMaze().getSIZE();
+		int y = e.getY()/ world.getMaze().getSize();
+		int x = e.getX()/ world.getMaze().getSize();
 		MazePoint point = world.getMaze().getMazeAt(x, y);
 		// check if the MazePoint exists
 		if(point != null){
