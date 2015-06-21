@@ -14,14 +14,12 @@ import javax.swing.JPanel;
 public class PlayPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private GamePanel panel;
-	private JPanel buttonPanel, panelP1, panelP2;;
-	private JPanel topButtons;
+	private JPanel buttonPanel, panelP1, panelP2, topButtons;
 	private PlayerController p1, p2;
 	private JButton backMainMenu = new JButton("Back to main menu");
 	private JButton restart = new JButton("Restart");
 	private KeyAction key;
 	private Update u = null;
-	
 	private World world;
 	private MainFrame frame;
 	private Timer timer;
@@ -29,7 +27,7 @@ public class PlayPanel extends JPanel {
 	public PlayPanel(MainFrame frame, World world) {
 		this.world = world;
 		this.frame = frame;
-		this.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		panel = new GamePanel(world);
 		
 		buttonPanel = new JPanel();
@@ -38,9 +36,9 @@ public class PlayPanel extends JPanel {
 		topButtons.add(restart);
 		u = new Update(panel, this);
 		
-		this.add(topButtons, BorderLayout.PAGE_START);
-		this.add(panel, BorderLayout.CENTER);
-		this.add(buttonPanel, BorderLayout.PAGE_END);
+		add(topButtons, BorderLayout.PAGE_START);
+		add(panel, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.PAGE_END);
 
 		setFocusable(true);
 		grabFocus();
@@ -48,15 +46,15 @@ public class PlayPanel extends JPanel {
 		//this.setPreferredSize(new Dimension(400,400));
 				
 		key = new KeyAction();
-		this.addKeyListener(key);
+		addKeyListener(key);
 		init();
 		initWorld();
 		panelP1 = new PlayerInfo((Player) world.getCharacter(0));
 		panelP2 = new PlayerInfo((Player) world.getCharacter(1));
 
-		this.add(panelP1, BorderLayout.LINE_START);
-		this.add(panelP2, BorderLayout.LINE_END);
-		this.setVisible(true);
+		add(panelP1, BorderLayout.LINE_START);
+		add(panelP2, BorderLayout.LINE_END);
+		setVisible(true);
 	}
 		
 	public KeyAction getKeyAction(){
@@ -86,9 +84,9 @@ public class PlayPanel extends JPanel {
 			int x = (int) (p.getX() * maze.getSize() + 0.5 * maze.getSize());
 			int y = (int) (p.getY() * maze.getSize() + 0.5 * maze.getSize());
 			c = new Player(x, y, world, "player " + (i+1));
-			world.getCharacters().add(c);
-			
+			world.getCharacters().add(c);	
 		}
+		
 		System.out.println(world.getCharacters());
 		System.out.println(world.getCharacters().get(0).getLocation());
 		p1 = new PlayerController(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_P, KeyEvent.VK_O, frame.getKeyAction().getPressedKeys(), (Player) world.getCharacter(0), this);
@@ -109,6 +107,7 @@ public class PlayPanel extends JPanel {
 			z.setColor(Color.RED);
 			u.getControllers().add(new ZombieController(z, world));	
 		}
+		
 		panel.repaint();
 		playLoop();
 	}

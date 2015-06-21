@@ -77,7 +77,6 @@ public abstract class Character extends Observable {
 			setLocation(p);
 		}
 		direction = 's';
-		
 	}
 
 	public void moveUp() {

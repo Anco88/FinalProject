@@ -17,7 +17,7 @@ public class SettingsPanel extends JPanel {
 	private JTextField zText;
 	private JButton zButton;
 	
-	SettingsPanel(World world){
+	SettingsPanel(World world) {
 		this.w = world;
 		System.out.println(world);
 		zLabel = new JLabel("Number of zombies: ");
@@ -28,7 +28,7 @@ public class SettingsPanel extends JPanel {
 		add(zButton, BorderLayout.NORTH);
 		
 		zButton.addActionListener(
-				new ActionListener(){
+				new ActionListener() {
 					public void actionPerformed (ActionEvent e){
 						w.getSettings().setNumberOfZombies(zText.getText());
 						zText.setText(Integer.toString(w.getSettings().getNumberOfZombies()));

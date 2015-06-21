@@ -16,7 +16,7 @@ public class PlayerInfo extends JPanel implements Observer {
 	private Player p;
 	private JLabel label, item, numPick, numWall, winner;
 	
-	public PlayerInfo(Player p){
+	public PlayerInfo(Player p) {
 		winner = new JLabel("WINNER");
 		winner.setFont(new Font("Serif", Font.PLAIN, 20));
 		this.p = p;
@@ -46,7 +46,7 @@ public class PlayerInfo extends JPanel implements Observer {
 		item.setText("Current: " + p.getCurrentItem());
 		numPick.setText("Pickaxes: " + p.getPickaxe());
 		numWall.setText("Walls: " + p.getWall());
-		if(p.getHasWon()){
+		if(p.getHasWon()) {
 			System.out.println("winner " + p);
 			winner.setVisible(true);
 		}
