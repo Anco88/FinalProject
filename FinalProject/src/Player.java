@@ -26,6 +26,54 @@ public class Player extends Character {
 		notifyObservers();
 	}
 
+	public int getPickaxe() {
+		return pickaxe;
+	}
+
+	public void setPickaxe(int pickaxe) {
+		this.pickaxe = pickaxe;
+	}
+
+	public int getWall() {
+		return wall;
+	}
+
+	public void setWall(int wall) {
+		this.wall = wall;
+	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCurrentItem() {
+		return currentItem.getCurrent();
+	}
+	
+	public void nextItem() {
+		currentItem.next();
+		change();
+	}
+
+	public Boolean getHasWon() {
+		return hasWon;
+	}
+
+	public void useItem() {
+		
+		switch(currentItem.getCurrent()){
+		case "pickaxe":	pickWall();
+						break;
+		case "wall": 	buildWall();
+						break;
+		}
+	}
+	
 	public void pickWall(){
 		if(pickaxe > 0){
 			if(getWallCloseBy() != null && getWallCloseBy().getType() == 1){
@@ -34,7 +82,7 @@ public class Player extends Character {
 					System.out.println("time start: " + startTimer);
 				}
 				else{
-					if(System.currentTimeMillis() - startTimer > 20){
+					if(System.currentTimeMillis() - startTimer > 1500){
 						getWallCloseBy().setType(0);
 						wall++;
 						pickaxe--;
@@ -46,7 +94,6 @@ public class Player extends Character {
 			}
 		}
 	}
-
 
 	private MazePoint getWallCloseBy() {
 		double x = location.getX();
@@ -67,34 +114,7 @@ public class Player extends Character {
 				break;
 		}
 		MazePoint p = world.getMaze().getMazeAt((int) x / world.getMaze().getSize(), (int) y / world.getMaze().getSize()); 
-		return p;
-		
-	}
-
-	public int getPickaxe() {
-		return pickaxe;
-	}
-
-	public void setPickaxe(int pickaxe) {
-		this.pickaxe = pickaxe;
-	}
-
-	public int getWall() {
-		return wall;
-	}
-
-	public void setWall(int wall) {
-		this.wall = wall;
-	}
-
-	public void useItem() {
-		
-		switch(currentItem.getCurrent()){
-		case "pickaxe":	pickWall();
-						break;
-		case "wall": 	buildWall();
-						break;
-		}
+		return p;	
 	}
 
 	private void buildWall() {
@@ -109,7 +129,7 @@ public class Player extends Character {
 				}
 				else{
 					//System.out.println(System.currentTimeMillis());
-					if(System.currentTimeMillis() - startTimer > 20){
+					if(System.currentTimeMillis() - startTimer > 1500){
 						checkLocationAfterBuildWall(m);
 						m.setType(1);
 						wall--;
@@ -119,9 +139,6 @@ public class Player extends Character {
 					}
 				}
 			}
-		}
-		else{
-			System.out.println("no Pickaxe");
 		}
 	}
 
@@ -142,7 +159,6 @@ public class Player extends Character {
 			}
 			c = new Ellipse2D.Double(location.getX()-5, location.getY()-5, 10, 10);
 		}
-		
 	}
 
 	private MazePoint canBuildWall() {
@@ -190,30 +206,6 @@ public class Player extends Character {
 	public void stopUseItem() {
 		startTimer = -1;
 		
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getCurrentItem() {
-		return currentItem.getCurrent();
-	}
-	
-	public void nextItem() {
-		currentItem.next();
-		change();
-	}
-
-	public Boolean getHasWon() {
-		return hasWon;
 	}
 
 	public void setHasWon(Boolean hasWon) {
