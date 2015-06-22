@@ -119,7 +119,7 @@ public class Maze {
 			}
 		}
 		catch(IOException e){
-			System.err.println("error");
+			System.err.println("Couldn't load file");
 			  e.printStackTrace();
 		}		
 	}

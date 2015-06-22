@@ -14,9 +14,6 @@ public class ZombieController implements Controller {
 		this.world = w;
 	}
 
-	/* (non-Javadoc)
-	 * @see Controller#update()
-	 */
 	@Override
 	public void update() {
 		Random random = new Random();
