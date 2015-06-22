@@ -3,6 +3,8 @@ import java.util.ArrayList;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ *	This class is a simple circular list implementation, 
+ *  used to go rounds in the items a player can use
  */
 
 public class CurrentItem {

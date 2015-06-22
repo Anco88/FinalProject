@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * This class stores all pressed buttons in an ArrayList which can be used by controllers
  */
 
 public class KeyAction extends KeyAdapter {

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Class used to store information about the game. Mainly used to pass information to classes that need the information
  */
 public class World {
 	private Maze maze;

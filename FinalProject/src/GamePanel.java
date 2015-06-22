@@ -6,12 +6,9 @@ import java.awt.geom.Ellipse2D;
 import javax.swing.JPanel;
 
 /**
- * 
- */
-
-/**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
- *
+ * 
+ * This class draws the maze and also the characters in it
  */
 public class GamePanel extends JPanel {
 

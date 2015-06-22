@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Panel to show the options to change and buttons to go to other panels
  */
 
 public class MainPanel extends JPanel {

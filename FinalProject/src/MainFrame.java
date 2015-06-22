@@ -4,7 +4,8 @@ import javax.swing.JFrame;
 
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
- *
+ * 
+ * This class shows the frame and handles the switching between JPanels in order to show the right panel
  */
 
 public class MainFrame extends JFrame {

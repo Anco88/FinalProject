@@ -8,7 +8,8 @@ import javax.swing.JTextField;
 
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
- *
+ * 
+ * panel to change settings of the game. Now just the number of zombies
  */
 public class SettingsPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

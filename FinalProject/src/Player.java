@@ -3,6 +3,7 @@ import java.awt.geom.Ellipse2D;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Class to store a human character in
  */
 
 public class Player extends Character {

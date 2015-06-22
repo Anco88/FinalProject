@@ -1,6 +1,12 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ * 
+ * Class to register mouse clicks or dragging while in editor panel,
+ * so that the maze get updated.
+ */
 
 public class MouseAction extends MouseAdapter {
 	private World world;

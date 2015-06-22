@@ -10,6 +10,13 @@ import java.util.Timer;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
+ *
+ * Panel to show the running game. Also sets the characters random in the world
+ * and start to loop that calls the update methods of the controllers
+ */
+
 
 public class PlayPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

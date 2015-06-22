@@ -9,6 +9,7 @@ import javax.swing.KeyStroke;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Class to control a Player by keyboard input.
  */
 
 public class PlayerController implements Controller{

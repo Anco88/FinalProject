@@ -4,6 +4,7 @@ import java.util.TimerTask;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Class which calls the update() method of all added controllers
  */
 public class Update extends TimerTask {
 	ArrayList<Controller> controllers = new ArrayList<Controller>();

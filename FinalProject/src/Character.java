@@ -8,6 +8,8 @@ import java.util.Observable;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Superclass of all character classes, contains methods for moving in the maze 
+ * and got all important variables that is shared between all types of characters
  */
 public abstract class Character extends Observable {
 	protected int speed=0; // not used yet

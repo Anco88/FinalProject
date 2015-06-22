@@ -4,6 +4,7 @@ import java.util.Random;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Controller of the zombies. Tries to go to nearest players
  */
 public class ZombieController implements Controller {
 	private Zombie zombie;

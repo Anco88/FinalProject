@@ -3,7 +3,8 @@ import java.awt.Rectangle;
 
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
- *
+ * 
+ * Class to store the information about a point in the maze in.
  */
 
 public class MazePoint {

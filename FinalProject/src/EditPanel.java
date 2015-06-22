@@ -10,6 +10,7 @@ import javax.swing.JToggleButton;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * This class show shows an the panel to edit the maze. 
  */
 public class EditPanel extends JPanel {
 	private static final long serialVersionUID = -1778575427764855997L;

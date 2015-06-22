@@ -1,6 +1,7 @@
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * class to store all settings of the game in
  */
 
 public class Settings {

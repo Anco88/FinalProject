@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Panel to show information about a player
  */
 
 public class PlayerInfo extends JPanel implements Observer {

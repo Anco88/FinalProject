@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 /**
  * @author Anco Gietema (s2614154) & Dekel Viner (s2612925)
  *
+ * Class to store the maze in and methods to save and load the maze
  */
 
 public class Maze {
